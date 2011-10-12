@@ -1,0 +1,25 @@
+<%= form_for(@exam) do |f| %>
+
+	<%= render "shared/errors_messages", :object => @exam %>
+	
+	<div class="clearfix">
+		<%= f.label :title, "Nome da avaliação" %>
+		<div class="input">
+			<%= f.text_field :title, :class => "xlarge" %>
+		</div>
+	</div>
+	
+	<%= f.fields_for :questions do |question| %>
+		<%= render "question_fields", :builder => question %>
+	<% end %>
+	
+	<div class="clearfix">
+		<div class="input">
+			<%= link_to "Adicionar questão", "", :class => "btn info" %>	
+		</div>
+	</div>
+	
+  <div class="actions">
+    <%= f.submit "Salvar", :class => "btn primary" %>
+  </div>
+<% end %>

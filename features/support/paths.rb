@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 module NavigationHelpers
   # Maps a name to a path. Used by the
   #
@@ -11,6 +13,12 @@ module NavigationHelpers
     when /^the home\s?page$/
       '/'
 
+    when /^página das avaliações$/
+      exams_path
+      
+    when /^página de nova avaliação$/
+      new_exam_path
+      
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

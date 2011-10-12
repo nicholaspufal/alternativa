@@ -1,0 +1,31 @@
+<div class="page-header">
+  <h1>Listagem de avaliações</h1>
+</div>
+
+<div class="row">
+  <div class="span16">
+	
+		<table class="zebra-striped">
+			<thead>
+				<tr>
+					<th>Título</th>
+					<th>Data da criação</th>
+					<th>Opções</th>
+				</tr>
+			</thead>
+	
+			<tbody>
+				<% @exams.each do |exam| %>
+				<tr>
+					<td><%= link_to exam.title, exam_path(exam)  %></td>
+					<td><%= time_ago_in_words exam.created_at %> atrás</td>
+					<td><%= link_to "Editar", "" %> / <%= link_to "Remover", "" %></td>
+				</tr>
+				<% end %>
+			</tbody>		
+		</table>
+
+		<%= link_to "Criar nova avaliação", new_exam_path, :class => "btn primary" %>
+	</div>
+</div>
+
