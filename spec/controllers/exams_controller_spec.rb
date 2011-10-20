@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'ostruct'
 
 describe ExamsController do
   
@@ -19,8 +20,26 @@ describe ExamsController do
       assigns(:exam).should be_a_new(Exam)
     end
     
-    it "should instantiate 3 questions"    
-    it "should instantiate 4 answers for each question"
+    context "create questions and answers for the exam" do
+      
+      # let(:exam_questions) { Exam.any_instance.stub(:questions).and_return(double().as_null_object) }
+
+      it "should instantiate at least one question" do
+        question = mock_model(Question).as_null_object
+        Exam.any_instance.stub(:questions).and_return(OpenStruct.new(:answers => []))
+        question.should_receive(:build).exactly(4).times
+        get :new  
+      end
+          
+      it "should instantiate at least 4 answers for each question" do
+        pending
+        question = mock().stub(:answers).and_return(@mymock)
+        question.should_receive(:build).exactly(4).times      
+        get :new      
+      end  
+      
+    end
+    
     
   end
   

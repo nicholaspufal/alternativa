@@ -8,7 +8,7 @@ Funcionalidade: Professor cria avaliação
 	Cenário: Professor acessa o formulário de cadastro de nova avaliação 
 		Dado que eu estou na página das avaliações
 		Quando eu clico "Criar nova avaliação"
-		Então eu devo ver "Nova avaliação"
+		Então eu devo ver "Criar avaliação"
 		
 	@wip	
 	Cenário: Professor preenche todos os campos corretamente e submete 

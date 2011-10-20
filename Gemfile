@@ -18,11 +18,15 @@ gem 'jquery-rails'
 group :development do
   gem "therubyracer"
   gem "database_cleaner"
+  gem 'rb-inotify', :require => false
+  gem 'rb-fsevent', :require => false
+  gem 'rb-fchange', :require => false
 end
 
 group :test, :development do
   gem "rspec-rails"
   gem 'ruby-debug19', :require => 'ruby-debug'
+  gem "guard-rspec"  
 end
 
 group :test do
