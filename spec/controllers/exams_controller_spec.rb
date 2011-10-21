@@ -21,20 +21,20 @@ describe ExamsController do
     end
     
     context "create questions and answers for the exam" do
-      
-      # let(:exam_questions) { Exam.any_instance.stub(:questions).and_return(double().as_null_object) }
 
-      it "should instantiate at least one question" do
-        question = mock_model(Question).as_null_object
-        Exam.any_instance.stub(:questions).and_return(OpenStruct.new(:answers => []))
-        question.should_receive(:build).exactly(4).times
+      let(:build_object) { mock().as_null_object }
+      
+      it "should instantiate at least 3 questions" do
+        exam_questions = mock("questions for an exam").as_null_object
+        Exam.any_instance.stub(:questions).and_return(exam_questions)
+        exam_questions.stub(:build).and_return(build_object)
+        exam_questions.should_receive(:build).exactly(3).times
         get :new  
       end
           
-      it "should instantiate at least 4 answers for each question" do
-        pending
-        question = mock().stub(:answers).and_return(@mymock)
-        question.should_receive(:build).exactly(4).times      
+      it "should instantiate at least 4 answers for each of the 3 questions" do
+        Question.any_instance.stub(:answers).and_return(build_object)
+        build_object.should_receive(:build).exactly(12).times
         get :new      
       end  
       
