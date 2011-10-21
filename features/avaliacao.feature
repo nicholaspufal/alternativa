@@ -9,8 +9,13 @@ Funcionalidade: Professor cria avaliação
 		Dado que eu estou na página das avaliações
 		Quando eu clico "Criar nova avaliação"
 		Então eu devo ver "Criar avaliação"
+
+	@wip
+	Cenário: Professor exclui uma das alternativas de uma questão
+		Dado que eu estou na página de nova avaliação
+		Quando eu clico "Remover"
+		Então o campo deve sumir 
 		
-	@wip	
 	Cenário: Professor preenche todos os campos corretamente e submete 
 		Dado que eu estou na página de nova avaliação
 		Quando eu preencho o seguinte:

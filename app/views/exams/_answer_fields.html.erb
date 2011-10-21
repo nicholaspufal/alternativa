@@ -1,6 +1,8 @@
 <div class="clearfix">
 	<%= builder.label :title, "Alternativa" %>
 	<div class="input">
-		<%= builder.text_field :title, :class => "xlarge" %> <%= link_to "Remover", "", :class => "btn danger" %>	
+		<%= builder.hidden_field :_destroy %> 
+		<%= builder.text_field :title, :class => "xlarge" %> 
+		<%= link_to_function "Remover", "remove_fields(this)", :class => "btn danger" %> 
 	</div>
 </div> 

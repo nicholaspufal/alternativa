@@ -15,11 +15,11 @@
 	
 	<div class="clearfix">
 		<div class="input">
-			<%= link_to "Adicionar questão", "", :class => "btn info" %>	
+			<%= link_to_add_fields "Adicionar Questão", f, :questions, :class => "btn info" %>
 		</div>
 	</div>
 	
   <div class="actions">
     <%= f.submit "Salvar", :class => "btn primary" %>
-  </div>
+  </div>	
 <% end %>
