@@ -70,5 +70,7 @@
 
     </div> <!-- /container -->
 
+		<%= javascript_tag '$.fx.off = true;' if Rails.env.test? %>
+
 </body>
 </html>

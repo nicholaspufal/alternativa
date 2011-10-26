@@ -1,9 +1,10 @@
 <fieldset class="question">
-	<legend>Questão</legend>
+	<legend>Questão (<%= link_to_function "remover questão", "remove_question(this)" %>)</legend>
 
 <div class="clearfix">
 	<%= builder.label :title, "Pergunta" %>
 	<div class="input">
+		<%= builder.hidden_field :_destroy %> 
 		<%= builder.text_area :title, :class => "xlarge span9", :rows => 6 %>
 	</div>
 </div> 

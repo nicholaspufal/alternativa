@@ -8,8 +8,18 @@
 //= require jquery_ujs
 //= require_tree .
 
-function remove_fields(link) {
-    $(link).prevAll("input:hidden").val("1");  
+function remove_question(link) {	
+		$(link).closest("fieldset.question")
+					 .children(".clearfix:first")
+					 .children("div.input")
+					 .children("input:hidden")
+					 .val("1");
+					
+    $(link).closest("fieldset.question").fadeOut();  
+}
+
+function remove_field(link) {
+		$(link).prevAll("input:hidden").val("1");  
     $(link).closest(".clearfix").fadeOut();  
 }
 
