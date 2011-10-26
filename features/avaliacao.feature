@@ -10,7 +10,7 @@ Funcionalidade: Professor cria avaliação
 		Quando eu clico "Criar nova avaliação"
 		Então eu devo ver "Criar avaliação"
 		
-	Cenário: Professor preenche todos os campos corretamente e submete 
+	Cenário: Professor preenche e envia 
 		Dado que eu estou na página de nova avaliação
 		Quando eu preencho o seguinte:
 	    | Nome da avaliação 		| Primeira avaliação |
@@ -34,3 +34,5 @@ Funcionalidade: Professor cria avaliação
 		Quando eu clico "remover questão"
 		Então a questão deve sumir		
 		
+		#adicionar questao
+		#adicionar alternativa

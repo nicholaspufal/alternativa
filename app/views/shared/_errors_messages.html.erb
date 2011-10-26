@@ -1,11 +1,11 @@
 <% if object.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(object.errors.count, "error") %> prohibited this exam from being saved:</h2>
-
-    <ul>
+<div class="alert-message block-message error fade in">
+	<a class="close" href="#">×</a>
+	<p><strong>Em função de <%= pluralize(object.errors.count, "erro") %> não foi possível salvar.</strong> Por favor verifique o seguinte:</p>
+	<ul>
     <% object.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>
     <% end %>
-    </ul>
-  </div>
+	</ul>
+</div>
 <% end %>

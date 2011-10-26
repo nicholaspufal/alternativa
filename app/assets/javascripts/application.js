@@ -6,6 +6,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require twitter/bootstrap
 //= require_tree .
 
 function remove_question(link) {	
@@ -28,3 +29,7 @@ function add_fields(link, association, content) {
     var regexp = new RegExp("new_" + association, "g");  
     $(link).parent().parent().before(content.replace(regexp, new_id));  
 }
+
+$(document).ready(function(){
+	$(".alert-message").alert();
+});

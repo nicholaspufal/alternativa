@@ -16,12 +16,9 @@ class ExamsController < ApplicationController
   
   def create
     @exam = Exam.new(params[:exam])
-    if @exam.save
-      flash[:notice] = "Prova cadastrada com sucesso!"
-      redirect_to @exam
-    else
-      render :new
-    end
+    flash[:notice] = "Prova cadastrada com sucesso!" if @exam.save
+    
+    respond_with @exam
   end
   
   def show
