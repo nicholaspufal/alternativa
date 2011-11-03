@@ -10,7 +10,7 @@ Funcionalidade: Professor cria avaliação
 		Quando eu clico "Criar nova avaliação"
 		Então eu devo ver "Criar avaliação"
 		
-	Cenário: Professor preenche e envia 
+	Cenário: Professor cria prova com uma questão e uma alternativa
 		Dado que eu estou na página de nova avaliação
 		Quando eu preencho o seguinte:
 	    | Nome da avaliação 		| Primeira avaliação |
@@ -29,10 +29,19 @@ Funcionalidade: Professor cria avaliação
 		Então a alternativa deve sumir 
 	
 	@javascript
-	Cenário: Professor exclui uma das questões de uma prova
+	Cenário: Professor exclui uma das questões da prova
 		Dado que eu estou na página de nova avaliação
 		Quando eu clico "remover questão"
 		Então a questão deve sumir		
 		
-		#adicionar questao
-		#adicionar alternativa
+	@javascript
+	Cenário: Professor adiciona uma questão à prova
+		Dado que eu estou na página de nova avaliação
+		Quando eu clico "Adicionar questão"
+		Então uma nova questão deve aparecer
+		
+	@javascript
+	Cenário: Professor adiciona uma alternativa à questão
+		Dado que eu estou na página de nova avaliação
+		Quando eu clico "Adicionar alternativa"
+		Então uma nova alternativa deve aparecer

@@ -1,8 +1,13 @@
 <div class="clearfix">
 	<%= builder.label :title, "Alternativa" %>
 	<div class="input">
+	<div class="input-prepend">
+		<label class="add-on">
+			<input type="radio" name="op <%= builder.__id__ %>" />
+		</label>
 		<%= builder.hidden_field :_destroy %> 
 		<%= builder.text_field :title, :class => "xlarge" %> 
 		<%= link_to_function "Remover", "remove_field(this)", :class => "btn danger" %> 
+	</div>
 	</div>
 </div> 

@@ -32,4 +32,14 @@ function add_fields(link, association, content) {
 
 $(document).ready(function(){
 	$(".alert-message").alert();
+	
+	$('.add-on :radio').click(function () {
+
+			console.log("clicou");
+			
+			$(this).addClass('active');
+			$(this).siblings().removeClass('active');
+
+	 	});
+	
 });
