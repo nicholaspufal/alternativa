@@ -1,16 +1,41 @@
 <div class="page-header">
-  <h1>[Prova] <%= @exam.title %></h1>
+  <h1>Visualizando: <%= @exam.title %></h1>
 </div>
 <div class="row">
   <div class="span16">
-			Questões: 
+	
 		<% @exam.questions.each_with_index do |question, index| %>
-		<br/><br/>
-			<%= "Questão ##{index+1}"%> <%= question.title %><br/><br/>
-			<% question.answers.each_with_index do |answer, index| %>
-				<%= "Alternativa ##{index+1}"%> <% if answer.correct? %>(Correta)<% end %><%= answer.title %><br/>
-			<% end %>
-			
+		<div class="question">
+			<h3>Questão #<%= index + 1 %></h3>
+			<p><%= nl_to_br(question.title) %></p>
+			<div class="input">
+		    <ul class="inputs-list">
+					<% question.answers.each_with_index do |answer, index| %>
+		      <li>
+		        <label>
+		          <input type="radio" checked="" name="optionsRadios" value="option1">
+		          <span><%= answer.title %></span>
+		        </label>
+		      </li>
+					<% end %>
+		    </ul>
+			</div>
+	
+		</div>
 		<% end %>
-  </div>
+		
+	</div>
 </div>
+
+
+
+
+	<!-- Questões: 
+<% @exam.questions.each_with_index do |question, index| %>
+<br/><br/>
+	<%= "Questão ##{index+1}"%> <%= question.title %><br/><br/>
+	<% question.answers.each_with_index do |answer, index| %>
+		<%= "Alternativa ##{index+1}"%> <% if answer.correct? %>(Correta)<% end %> <%= answer.title %><br/>
+	<% end %>
+	
+<% end %> -->
