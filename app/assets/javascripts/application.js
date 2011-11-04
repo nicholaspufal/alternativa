@@ -30,16 +30,17 @@ function add_fields(link, association, content) {
     $(link).parent().parent().before(content.replace(regexp, new_id));  
 }
 
-$(document).ready(function(){
-	$(".alert-message").alert();
-	
-	$('.add-on :radio').click(function () {
+$(document).ready(function() {
 
-			console.log("clicou");
-			
-			$(this).addClass('active');
-			$(this).siblings().removeClass('active');
-
-	 	});
+	$('.alert-message').alert();
 	
+	 $('.add-on :checkbox').live("click", function () {		
+		
+	    if ($(this).parents('.add-on').hasClass('active')) {
+	      $(this).parents('.add-on').removeClass('active')
+	    } else {
+				$(this).parents('.add-on').addClass('active')
+	    }
+	  });
+		
 });

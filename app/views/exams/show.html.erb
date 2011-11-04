@@ -8,7 +8,7 @@
 		<br/><br/>
 			<%= "Questão ##{index+1}"%> <%= question.title %><br/><br/>
 			<% question.answers.each_with_index do |answer, index| %>
-				<%= "Alternativa ##{index+1}"%> <%= answer.title %><br/>
+				<%= "Alternativa ##{index+1}"%> <% if answer.correct? %>(Correta)<% end %><%= answer.title %><br/>
 			<% end %>
 			
 		<% end %>

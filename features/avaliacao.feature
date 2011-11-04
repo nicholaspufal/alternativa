@@ -21,7 +21,7 @@ Funcionalidade: Professor cria avaliação
 		E eu devo ver "Qual cor do cavalo branco de napoleão?"
 		E eu devo ver "Alternativa #1"
 		E eu devo ver "Branco"
-
+		
 	@javascript
 	Cenário: Professor exclui uma das alternativas de uma questão
 		Dado que eu estou na página de nova avaliação
