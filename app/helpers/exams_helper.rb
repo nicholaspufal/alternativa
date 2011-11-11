@@ -15,10 +15,6 @@ module ExamsHelper
     link_to_function(name, "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")".html_safe, options)  
   end
   
-  def mark_if_selected(answer)
-    "active" if answer.object.correct?
-  end
-  
 end
 
 

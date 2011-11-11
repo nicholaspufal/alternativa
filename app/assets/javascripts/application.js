@@ -31,16 +31,16 @@ function add_fields(link, association, content) {
 }
 
 $(document).ready(function() {
+	
+	//paint the selected option - coming from the database
+	$('.add-on [type=radio]:checked').parent().addClass('active');
 
 	$('.alert-message').alert();
 	
-	 $('.add-on :checkbox').live("click", function () {		
-		
-	    if ($(this).parents('.add-on').hasClass('active')) {
-	      $(this).parents('.add-on').removeClass('active')
-	    } else {
-				$(this).parents('.add-on').addClass('active')
-	    }
+	//remove all "active" class, and add it only to the selected element
+	 $('.add-on [type=radio]').live("click", function () {	
+			$(this).parents("fieldset").find(".add-on [type=radio]").parent().removeClass('active');
+			$(this).parent().addClass('active');		
 	  });
 		
 });
