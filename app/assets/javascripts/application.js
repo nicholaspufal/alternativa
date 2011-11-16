@@ -33,14 +33,17 @@ function add_fields(link, association, content) {
 $(document).ready(function() {
 	
 	//paint the selected option - coming from the database
-	$('.add-on [type=radio]:checked').parent().addClass('active');
+	$('.add-on [type=checkbox]:checked').parent().addClass('active');
 
 	$('.alert-message').alert();
+
+	//in order to avoid issues with radio buttons, solution was to simulate radio behavior with checkboxes...
+	$('.add-on :checkbox').live("click", function () {		
+		$(this).parents("fieldset").find(".add-on [type=checkbox]").removeAttr("checked");
+		$(this).parents("fieldset").find(".add-on [type=checkbox]").parent().removeClass("active");
 	
-	//remove all "active" class, and add it only to the selected element
-	 $('.add-on [type=radio]').live("click", function () {	
-			$(this).parents("fieldset").find(".add-on [type=radio]").parent().removeClass('active');
-			$(this).parent().addClass('active');		
-	  });
+		$(this).attr("checked","checked");		
+		$(this).parent().addClass("active");
+	 });
 		
 });

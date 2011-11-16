@@ -2,7 +2,7 @@
 	<div class="input">
 	<div class="input-prepend">
 		<label class="add-on">
-			<%= builder.radio_button :correct, true, :name => "correct_answer[#{builder.object.question.object_id}]"  %>
+			<%= builder.check_box :correct %>
 		</label>
 		
 		<%= builder.hidden_field :_destroy %> 

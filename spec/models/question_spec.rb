@@ -1,5 +1,9 @@
 require 'spec_helper'
 
 describe Question do
-  pending "add some examples to (or delete) #{__FILE__}"
+  
+  it "should have only one answer marked as correct" do
+    question = Factory.build(:question_with_multiple_correct)
+    question.should_not be_valid
+  end
 end
