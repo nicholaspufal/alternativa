@@ -22,6 +22,7 @@ end
 
 Quando /^eu preencho o seguinte:$/ do |fields|
   fields.rows_hash.each do |name, value|
+    name = "exam_questions_attributes_0_answers_attributes_0_title" if name == "Alternativa"
     fill_in(name, :with => value)
   end
 end
@@ -32,7 +33,7 @@ Então /^a (.*) deve sumir$/ do |field|
     when "alternativa"
       find("input#exam_questions_attributes_0_answers_attributes_0_title").should_not be_visible
     when "questão"
-      find("fieldset.question").should_not be_visible
+      find("fieldset.question:first").should_not be_visible
   end
 end
 

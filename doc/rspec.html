@@ -284,23 +284,23 @@ a {
 <div id="div_group_2" class="example_group passed">
   <dl style="margin-left: 15px;">
   <dt id="example_group_2" class="passed">GET index</dt>
-    <script type="text/javascript">moveProgressBar('6.6');</script>
+    <script type="text/javascript">moveProgressBar('5.0');</script>
     <dd class="example passed"><span class="passed_spec_name">assigns all exams as @exams</span></dd>
   </dl>
 </div>
 <div id="div_group_3" class="example_group passed">
   <dl style="margin-left: 15px;">
   <dt id="example_group_3" class="passed">GET new</dt>
-    <script type="text/javascript">moveProgressBar('13.3');</script>
+    <script type="text/javascript">moveProgressBar('10.0');</script>
     <dd class="example passed"><span class="passed_spec_name">assigns a new exam as @exam</span></dd>
   </dl>
 </div>
 <div id="div_group_4" class="example_group passed">
   <dl style="margin-left: 30px;">
   <dt id="example_group_4" class="passed">create questions and answers for the exam</dt>
-    <script type="text/javascript">moveProgressBar('20.0');</script>
+    <script type="text/javascript">moveProgressBar('15.0');</script>
     <dd class="example passed"><span class="passed_spec_name">should instantiate at least 3 questions</span></dd>
-    <script type="text/javascript">moveProgressBar('26.6');</script>
+    <script type="text/javascript">moveProgressBar('20.0');</script>
     <dd class="example passed"><span class="passed_spec_name">should instantiate at least 4 answers for each of the 3 questions</span></dd>
   </dl>
 </div>
@@ -312,140 +312,92 @@ a {
 <div id="div_group_6" class="example_group passed">
   <dl style="margin-left: 30px;">
   <dt id="example_group_6" class="passed">with valid params</dt>
-    <script type="text/javascript">makeRed('rspec-header');</script>
-    <script type="text/javascript">makeRed('div_group_6');</script>
-    <script type="text/javascript">makeRed('example_group_6');</script>
-    <script type="text/javascript">moveProgressBar('33.3');</script>
-    <dd class="example failed">
-      <span class="failed_spec_name">creates a new Exam</span>
-      <div class="failure" id="failure_1">
-        <div class="message"><pre>count should have been changed by 1, but was changed by 0</pre></div>
-        <div class="backtrace"><pre>./spec/controllers/exams_controller_spec.rb:50:in `block (4 levels) in <top (required)>'</pre></div>
-    <pre class="ruby"><code><span class="linenum">48</span>    describe "with valid params" do
-<span class="linenum">49</span>      it "creates a new Exam" do
-<span class="offending"><span class="linenum">50</span>        expect {</span>
-<span class="linenum">51</span>          post :create, :exam => valid_attributes
-<span class="linenum">52</span>        }.to change(Exam, :count).by(1)
-<span class="linenum">53</span><span class="comment"># gem install syntax to get syntax highlighting</span></code></pre>
-      </div>
-    </dd>
-    <script type="text/javascript">moveProgressBar('40.0');</script>
-    <dd class="example failed">
-      <span class="failed_spec_name">assigns a newly created exam as @exam</span>
-      <div class="failure" id="failure_2">
-        <div class="message"><pre>expected persisted? to return true, got false</pre></div>
-        <div class="backtrace"><pre>./spec/controllers/exams_controller_spec.rb:58:in `block (4 levels) in <top (required)>'</pre></div>
-    <pre class="ruby"><code><span class="linenum">56</span>        post :create, :exam => valid_attributes
-<span class="linenum">57</span>        assigns(:exam).should be_a(Exam)
-<span class="offending"><span class="linenum">58</span>        assigns(:exam).should be_persisted</span>
-<span class="linenum">59</span>      end
-<span class="linenum">60</span>  
-<span class="linenum">61</span><span class="comment"># gem install syntax to get syntax highlighting</span></code></pre>
-      </div>
-    </dd>
-    <script type="text/javascript">moveProgressBar('46.6');</script>
-    <dd class="example failed">
-      <span class="failed_spec_name">redirects to the created exam</span>
-      <div class="failure" id="failure_3">
-        <div class="message"><pre>Expected response to be a &lt;:redirect&gt;, but was &lt;200&gt;</pre></div>
-        <div class="backtrace"><pre>./spec/controllers/exams_controller_spec.rb:63:in `block (4 levels) in <top (required)>'</pre></div>
-    <pre class="ruby"><code><span class="linenum">61</span>      it "redirects to the created exam" do
-<span class="linenum">62</span>        post :create, :exam => valid_attributes
-<span class="offending"><span class="linenum">63</span>        response.should redirect_to(Exam.last)</span>
-<span class="linenum">64</span>      end
-<span class="linenum">65</span>    end
-<span class="linenum">66</span><span class="comment"># gem install syntax to get syntax highlighting</span></code></pre>
-      </div>
-    </dd>
+    <script type="text/javascript">moveProgressBar('25.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">assigns a newly created exam as @exam</span></dd>
+    <script type="text/javascript">moveProgressBar('30.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">redirects to the created exam</span></dd>
   </dl>
 </div>
 <div id="div_group_7" class="example_group passed">
   <dl style="margin-left: 30px;">
   <dt id="example_group_7" class="passed">with invalid params</dt>
-    <script type="text/javascript">moveProgressBar('53.3');</script>
+    <script type="text/javascript">moveProgressBar('35.0');</script>
     <dd class="example passed"><span class="passed_spec_name">assigns a newly created but unsaved exam as @exam</span></dd>
-    <script type="text/javascript">makeRed('div_group_7');</script>
-    <script type="text/javascript">makeRed('example_group_7');</script>
-    <script type="text/javascript">moveProgressBar('60.0');</script>
-    <dd class="example failed">
-      <span class="failed_spec_name">re-renders the 'new' template</span>
-      <div class="failure" id="failure_4">
-        <div class="message"><pre>expecting &lt;&quot;new&quot;&gt; but rendering with &lt;&quot;&quot;&gt;</pre></div>
-        <div class="backtrace"><pre>./spec/controllers/exams_controller_spec.rb:79:in `block (4 levels) in <top (required)>'</pre></div>
-    <pre class="ruby"><code><span class="linenum">77</span>        Exam.any_instance.stub(:save).and_return(false)
-<span class="linenum">78</span>        post :create, :exam => {}
-<span class="offending"><span class="linenum">79</span>        response.should render_template("new")</span>
-<span class="linenum">80</span>      end
-<span class="linenum">81</span>    end
-<span class="linenum">82</span><span class="comment"># gem install syntax to get syntax highlighting</span></code></pre>
-      </div>
-    </dd>
+    <script type="text/javascript">moveProgressBar('40.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">re-renders the 'new' template</span></dd>
   </dl>
 </div>
 <div id="div_group_8" class="example_group passed">
   <dl style="margin-left: 15px;">
   <dt id="example_group_8" class="passed">GET show</dt>
-    <script type="text/javascript">makeRed('div_group_8');</script>
-    <script type="text/javascript">makeRed('example_group_8');</script>
-    <script type="text/javascript">moveProgressBar('66.6');</script>
-    <dd class="example failed">
-      <span class="failed_spec_name">assigns the requested exam as @exam</span>
-      <div class="failure" id="failure_5">
-        <div class="message"><pre>A validação falhou: Nome da avaliação não pode ficar em branco, Ao menos uma questão é obrigatória.</pre></div>
-        <div class="backtrace"><pre>./spec/controllers/exams_controller_spec.rb:86:in `block (3 levels) in <top (required)>'</pre></div>
-    <pre class="ruby"><code><span class="linenum">84</span>  describe "GET show" do
-<span class="linenum">85</span>     it "assigns the requested exam as @exam" do
-<span class="offending"><span class="linenum">86</span>       exam = Exam.create! valid_attributes</span>
-<span class="linenum">87</span>       get :show, :id => exam.id.to_s
-<span class="linenum">88</span>       assigns(:exam).should eq(exam)
-<span class="linenum">89</span><span class="comment"># gem install syntax to get syntax highlighting</span></code></pre>
-      </div>
-    </dd>
+    <script type="text/javascript">moveProgressBar('45.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">assigns the requested exam as @exam</span></dd>
   </dl>
 </div>
 <div id="div_group_9" class="example_group passed">
-  <dl style="margin-left: 0px;">
-  <dt id="example_group_9" class="passed">ExamsHelper</dt>
-    <script type="text/javascript">makeYellow('div_group_9');</script>
-    <script type="text/javascript">makeYellow('example_group_9');</script>
-    <script type="text/javascript">moveProgressBar('73.3');</script>
-    <dd class="example not_implemented"><span class="not_implemented_spec_name">add some examples to (or delete) /Users/nicholaspufal/Developer/projects/alternativa_tcc/spec/helpers/exams_helper_spec.rb (PENDING: Not Yet Implemented)</span></dd>
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_9" class="passed">GET edit</dt>
+    <script type="text/javascript">moveProgressBar('50.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">assigns the requested exam as @exam</span></dd>
   </dl>
 </div>
 <div id="div_group_10" class="example_group passed">
-  <dl style="margin-left: 0px;">
-  <dt id="example_group_10" class="passed">Answer</dt>
-    <script type="text/javascript">makeYellow('div_group_10');</script>
-    <script type="text/javascript">makeYellow('example_group_10');</script>
-    <script type="text/javascript">moveProgressBar('80.0');</script>
-    <dd class="example not_implemented"><span class="not_implemented_spec_name">add some examples to (or delete) /Users/nicholaspufal/Developer/projects/alternativa_tcc/spec/models/answer_spec.rb (PENDING: Not Yet Implemented)</span></dd>
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_10" class="passed">PUT update</dt>
   </dl>
 </div>
 <div id="div_group_11" class="example_group passed">
-  <dl style="margin-left: 0px;">
-  <dt id="example_group_11" class="passed">Exam</dt>
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_11" class="passed">with valid params</dt>
+    <script type="text/javascript">moveProgressBar('55.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">updates the requested exam</span></dd>
+    <script type="text/javascript">moveProgressBar('60.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">assigns the requested exam as @exam</span></dd>
+    <script type="text/javascript">moveProgressBar('65.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">redirects to the exam</span></dd>
   </dl>
 </div>
 <div id="div_group_12" class="example_group passed">
-  <dl style="margin-left: 15px;">
-  <dt id="example_group_12" class="passed">new exam</dt>
-    <script type="text/javascript">moveProgressBar('86.6');</script>
-    <dd class="example passed"><span class="passed_spec_name">should have a title</span></dd>
-    <script type="text/javascript">moveProgressBar('93.3');</script>
-    <dd class="example passed"><span class="passed_spec_name">should have at least one question</span></dd>
+  <dl style="margin-left: 30px;">
+  <dt id="example_group_12" class="passed">with invalid params</dt>
+    <script type="text/javascript">moveProgressBar('70.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">assigns the exam as @exam</span></dd>
+    <script type="text/javascript">moveProgressBar('75.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">re-renders the 'edit' template</span></dd>
   </dl>
 </div>
 <div id="div_group_13" class="example_group passed">
-  <dl style="margin-left: 0px;">
-  <dt id="example_group_13" class="passed">Question</dt>
-    <script type="text/javascript">makeYellow('div_group_13');</script>
-    <script type="text/javascript">makeYellow('example_group_13');</script>
-    <script type="text/javascript">moveProgressBar('100.0');</script>
-    <dd class="example not_implemented"><span class="not_implemented_spec_name">add some examples to (or delete) /Users/nicholaspufal/Developer/projects/alternativa_tcc/spec/models/question_spec.rb (PENDING: Not Yet Implemented)</span></dd>
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_13" class="passed">DELETE destroy</dt>
+    <script type="text/javascript">moveProgressBar('80.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">destroys the requested exam</span></dd>
+    <script type="text/javascript">moveProgressBar('85.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">redirects to the exams list</span></dd>
   </dl>
 </div>
-<script type="text/javascript">document.getElementById('duration').innerHTML = "Finished in <strong>9.59897 seconds</strong>";</script>
-<script type="text/javascript">document.getElementById('totals').innerHTML = "15 examples, 5 failures, 3 pending";</script>
+<div id="div_group_14" class="example_group passed">
+  <dl style="margin-left: 0px;">
+  <dt id="example_group_14" class="passed">Exam</dt>
+  </dl>
+</div>
+<div id="div_group_15" class="example_group passed">
+  <dl style="margin-left: 15px;">
+  <dt id="example_group_15" class="passed">new exam</dt>
+    <script type="text/javascript">moveProgressBar('90.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should have a title</span></dd>
+    <script type="text/javascript">moveProgressBar('95.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should have at least one question</span></dd>
+  </dl>
+</div>
+<div id="div_group_16" class="example_group passed">
+  <dl style="margin-left: 0px;">
+  <dt id="example_group_16" class="passed">Question</dt>
+    <script type="text/javascript">moveProgressBar('100.0');</script>
+    <dd class="example passed"><span class="passed_spec_name">should have only one answer marked as correct</span></dd>
+  </dl>
+</div>
+<script type="text/javascript">document.getElementById('duration').innerHTML = "Finished in <strong>10.430015 seconds</strong>";</script>
+<script type="text/javascript">document.getElementById('totals').innerHTML = "20 examples, 0 failures";</script>
 </div>
 </div>
 </body>

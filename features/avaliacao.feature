@@ -17,9 +17,7 @@ Funcionalidade: Professor cria avaliação
 	    | Pergunta							| Qual cor do cavalo branco de napoleão? |
 	    | Alternativa						| Branco |
 		E eu aperto "Salvar"	
-		Então eu devo ver "Questão #1"
 		E eu devo ver "Qual cor do cavalo branco de napoleão?"
-		E eu devo ver "Alternativa #1"
 		E eu devo ver "Branco"
 		
 	@javascript
