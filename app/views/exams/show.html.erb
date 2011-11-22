@@ -4,16 +4,16 @@
 <div class="row">
   <div class="span16">
 	
-		<% @exam.questions.each_with_index do |question, index| %>
+		<% @exam.questions.each_with_index do |question, question_index| %>
 		<div class="question">
-			<h3>Questão #<%= index + 1 %></h3>
+			<h3>Questão #<%= question_index + 1 %></h3>
 			<p><%= nl_to_br(question.title) %></p>
 			<div class="input">
 		    <ul class="inputs-list">
-					<% question.answers.each_with_index do |answer, index| %>
+					<% question.answers.each_with_index do |answer, answer_index| %>
 		      <li>
 		        <label>
-		          <input type="radio" checked="" name="optionsRadios" value="option1">
+		          <input type="radio" name="optionsRadios<%= question_index %>" value="option1">
 		          <span><%= answer.title %></span>
 		        </label>
 		      </li>
