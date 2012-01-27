@@ -103,22 +103,23 @@ describe ExamsController do
     describe "with valid params" do
       
       before(:each) do
-        @exam = mock_model(Exam).as_null_object
+        @exam = mock_model(Exam)
         Exam.stub(:find).and_return(@exam)
+        @exam.stub(:update_attributes).and_return(true)
       end
       
       it "updates the requested exam" do
-        @exam.should_receive(:update_attributes).with({'these' => 'params'})
-        put :update, :id => @exam.id, :exam => {'these' => 'params'}
+        @exam.should_receive(:update_attributes).with({'some exam' => 'exam info'})
+        put :update, {:id => @exam.id.to_s, :exam => {'some exam' => 'exam info'}}
       end
   
       it "assigns the requested exam as @exam" do
-        put :update, :id => @exam.id
+        put :update, :id => @exam.id.to_s
         assigns(:exam).should eq(@exam)
       end
         
       it "redirects to the exam" do
-        put :update, :id => @exam.id
+        put :update, :id => @exam.id.to_s
         response.should redirect_to(@exam)
       end
     end
@@ -126,7 +127,7 @@ describe ExamsController do
     describe "with invalid params" do
       
       before(:each) do
-        @exam = mock_model(Exam).as_null_object
+        @exam = mock_model(Exam)
         Exam.stub(:find).and_return(@exam)
         @exam.stub(:update_attributes).and_return(false)
       end
