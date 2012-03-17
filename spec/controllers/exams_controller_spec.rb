@@ -3,11 +3,6 @@ require 'ostruct'
 
 describe ExamsController do
   
-  def valid_attributes
-    {
-    }
-  end
-  
   describe "GET index" do
     it "assigns all exams as @exams" do
      response.should be_successful 
@@ -15,7 +10,6 @@ describe ExamsController do
   end
 
   describe "GET new" do
-    
     it "assigns a new exam as @exam" do
       get :new
       assigns(:exam).should be_a_new(Exam)

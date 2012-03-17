@@ -16,8 +16,6 @@ gem 'jquery-rails'
 group :development do
   gem "therubyracer"
   gem "database_cleaner"
-  gem "guard-rspec"  
-  gem "growl_notify"
 end
 
 group :test, :development do
@@ -27,6 +25,7 @@ group :test, :development do
 end
 
 group :test do
+  gem "capybara-webkit"
   gem "capybara"
   gem "cucumber-rails"
   gem "factory_girl_rails"
