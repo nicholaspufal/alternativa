@@ -1,6 +1,6 @@
 <% if object.errors.any? %>
-<div class="alert-message block-message error fade in">
-	<a class="close" href="#">×</a>
+<div class="alert alert-block">
+	<a class="close" data-dismiss="alert">×</a>
 	<p><strong>Em função de <%= pluralize(object.errors.count, "erro") %> não foi possível salvar.</strong> Por favor verifique o seguinte:</p>
 	<ul>
     <% object.errors.full_messages.each do |msg| %>

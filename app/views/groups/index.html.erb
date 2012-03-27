@@ -2,11 +2,8 @@
   <h1>Listagem de grupos</h1>
 </div>
 
-<div class="row">
-  <div class="span16">
-	
 <% if @groups.present? %>
-		<table class="zebra-striped">
+		<table class="table table-striped">
 			<thead>
 				<tr>
 					<th>Nome do grupo</th>
@@ -26,13 +23,12 @@
 			</tbody>		
 		</table>
 <% else %>
-	<div class="alert-message block-message warning">
-		<p>Não existem grupos cadastrados.</p>
-	</div>
+<div class="alert alert-block">
+	<a class="close" data-dismiss="alert">×</a>
+	<p>Não existem grupos cadastrados.</p>
+</div>
 	
 <% end %>
 
-		<%= link_to "Criar novo grupo", new_group_path, :class => "btn primary" %>
-	</div>
-</div>
+		<%= link_to "Criar novo grupo", new_group_path, :class => "btn btn-primary" %>
 

@@ -2,37 +2,34 @@
   <h1>Listagem de avaliações</h1>
 </div>
 
-<div class="row">
-  <div class="span16">
-	
 <% if @exams.present? %>
-		<table class="zebra-striped">
-			<thead>
-				<tr>
-					<th>Título</th>
-					<th>Data da criação</th>
-					<th>Opções</th>
-				</tr>
-			</thead>
-	
-			<tbody>
-				<% @exams.each do |exam| %>
-				<tr>
-					<td><%= link_to exam.title, exam_path(exam)  %></td>
-					<td><%= time_ago_in_words exam.created_at %> atrás</td>
-					<td><%= link_to "Editar", edit_exam_path(exam) %> / <%= link_to "Remover", exam_path(exam), :method => :delete, :confirm => "Tem certeza que deseja remover?" %></td>
-				</tr>
-				<% end %>
-			</tbody>		
-		</table>
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Título</th>
+			<th>Data da criação</th>
+			<th>Opções</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @exams.each do |exam| %>
+		<tr>
+			<td><%= link_to exam.title, exam_path(exam)  %></td>
+			<td><%= time_ago_in_words exam.created_at %> atrás</td>
+			<td><%= link_to "Editar", edit_exam_path(exam) %> / <%= link_to "Remover", exam_path(exam), :method => :delete, :confirm => "Tem certeza que deseja remover?" %></td>
+		</tr>
+		<% end %>
+	</tbody>		
+</table>
 <% else %>
-	<div class="alert-message block-message warning">
-		<p>Não existem provas cadastradas.</p>
-	</div>
-	
+<div class="alert alert-block">
+	<a class="close" data-dismiss="alert">×</a>
+	<p>Não existem provas cadastradas.</p>
+</div>
+
 <% end %>
 
-		<%= link_to "Criar nova avaliação", new_exam_path, :class => "btn primary" %>
-	</div>
-</div>
+<%= link_to "Criar nova avaliação", new_exam_path, :class => "btn btn-primary" %>
+
 

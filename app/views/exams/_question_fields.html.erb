@@ -1,11 +1,11 @@
 <fieldset class="question">
 	<legend>Questão (<%= link_to_function "remover questão", "remove_question(this)" %>)</legend>
 
-<div class="clearfix">
-	<%= builder.label :title, "Pergunta" %>
-	<div class="input">
+<div class="control-group">
+	<%= builder.label :title, "Pergunta", :class => "control-label" %>
+	<div class="controls">
 		<%= builder.hidden_field :_destroy %> 
-		<%= builder.text_area :title, :class => "xlarge span9", :rows => 6 %>
+		<%= builder.text_area :title, :class => "input-xlarge span9", :rows => 6 %>
 	</div>
 </div> 
 
@@ -13,9 +13,9 @@
 			<%= render "answer_fields", :builder => answer %>
 		<% end %>
 	
-	<div class="clearfix">
-		<div class="input">
-			<%= link_to_add_fields "Adicionar alternativa", builder, :answers, :class => "btn success" %>	
+	<div class="control-group">
+		<div class="controls">
+			<%= link_to_add_fields "Adicionar alternativa", builder, :answers, :class => "btn btn-success" %>	
 		</div>
 	</div>
 	

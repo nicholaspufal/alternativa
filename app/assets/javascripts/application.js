@@ -21,7 +21,7 @@ function remove_question(link) {
 
 function remove_field(link) {
 		$(link).prevAll("input:hidden").val("1");  
-    $(link).closest(".clearfix").fadeOut();  
+    $(link).closest(".control-group").fadeOut();  
 }
 
 function add_fields(link, association, content) {  

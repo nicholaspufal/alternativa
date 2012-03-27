@@ -1,25 +1,25 @@
-<%= form_for(@exam) do |f| %>
+<%= form_for(@exam, :html => {:class => "form-horizontal"}) do |f| %>
 
 	<%= render "shared/errors_messages", :object => @exam %>
-	
-	<div class="clearfix">
-		<%= f.label :title, "Nome da avaliação" %>
-		<div class="input">
-			<%= f.text_field :title, :class => "xlarge" %>
+
+	<div class="control-group">
+		<%= f.label :title, "Nome da avaliação", :class => "control-label" %>
+		<div class="controls">
+			<%= f.text_field :title, :class => "input-xlarge" %>
 		</div>
 	</div>
-	
+
 	<%= f.fields_for :questions do |question| %>
 		<%= render "question_fields", :builder => question %>
 	<% end %>
-	
-	<div class="clearfix">
-		<div class="input">
-			<%= link_to_add_fields "Adicionar questão", f, :questions, :class => "btn info" %>
+
+	<div class="control-group">
+		<div class="controls">
+			<%= link_to_add_fields "Adicionar questão", f, :questions, :class => "btn btn-info" %>
 		</div>
 	</div>
-	
-  <div class="actions">
-    <%= f.submit "Salvar", :class => "btn primary" %>
+
+  <div class="form-actions">
+    <%= f.submit "Salvar", :class => "btn btn-primary" %>
   </div>	
 <% end %>

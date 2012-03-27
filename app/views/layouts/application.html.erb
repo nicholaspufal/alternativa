@@ -13,6 +13,7 @@
 	  padding-top: 40px; /* 40px to make the container go all the way to the bottom of the topbar */
 	}
 	.container > footer p {
+		margin: 5px auto;
 	  text-align: center; /* center align it with the container */
 	}
 
@@ -40,36 +41,39 @@
 </head>
 <body>
 
- <div class="topbar">
-      <div class="fill">
-        <div class="container">
-					<%= link_to "Alternativa Admin", root_path, :class => "brand" %>
+  <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+        <%= link_to "Alternativa Admin", root_path, :class => "brand" %>
+        <div class="nav-collapse">
           <ul class="nav">
-						<li><%= link_to "Avaliações", exams_path %></li>
-						<li><%= link_to "Grupos", groups_path %></li>
+            <li><%= link_to "Avaliações", exams_path %></li>
+            <li><%= link_to "Grupos", groups_path %></li>
           </ul>
-          <form action="" class="pull-right">
-                      <button class="btn danger" type="submit">Log out</button>
-                    </form>
-        </div>
+        </div><!--/.nav-collapse -->
       </div>
     </div>
+  </div>
 
-		<div class="clear"></div>
+  <div class="container">
 
-    <div class="container">
+    <div class="content">
+     	<%= yield %>
+    </div>
 
-      <div class="content">
-       	<%= yield %>
-      </div>
+    <footer>
+      <p>&copy; Alternativa 2011</p>
+    </footer>
 
-      <footer>
-        <p>&copy; Alternativa 2011</p>
-      </footer>
+  </div> <!-- /container -->
 
-    </div> <!-- /container -->
 
-		<%= javascript_tag '$.fx.off = true;' if Rails.env.test? %>
+	<%= javascript_tag '$.fx.off = true;' if Rails.env.test? %>
 
 </body>
 </html>

@@ -1,13 +1,8 @@
-<div class="clearfix">
-	<div class="input">
-	<div class="input-prepend">
-		<label class="add-on">
-			<%= builder.check_box :correct %>
-		</label>
-		
+<div class="control-group">
+	<div class="controls">
+		<%= builder.check_box :correct, :class => "add-on" %>
 		<%= builder.hidden_field :_destroy %> 
 		<%= builder.text_field :title, :class => "span7" %> 
-		<%= link_to_function "Remover", "remove_field(this)", :class => "btn danger" %> 
-	</div>
+		<%= link_to_function "Remover", "remove_field(this)", :class => "btn btn-danger" %> 
 	</div>
 </div> 
