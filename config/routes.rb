@@ -1,6 +1,7 @@
 AlternativaTcc::Application.routes.draw do
   root :to => "exams#index"  
   resources :exams
+  resources :groups
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

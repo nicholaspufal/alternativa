@@ -1,0 +1,14 @@
+<%= form_for(@group) do |f| %>
+	<%= render "shared/errors_messages", :object => @group %>
+
+	<div class="clearfix">
+		<%= f.label :name, "Nome do grupo" %>
+		<div class="input">
+			<%= f.text_field :name, :class => "xlarge" %>
+		</div>
+	</div>
+	
+  <div class="actions">
+    <%= f.submit "Salvar", :class => "btn primary" %>
+  </div>
+<% end %>
