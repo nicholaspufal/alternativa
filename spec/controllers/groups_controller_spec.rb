@@ -8,19 +8,21 @@ describe GroupsController do
   def valid_session
     {}
   end
+  
+  let (:group) { mock_model(Group) }
 
   describe "GET index" do
     it "assigns all groups as @groups" do
-      group = Group.create! valid_attributes
+      groups = [FactoryGirl.create(:group), FactoryGirl.create(:group)]
       get :index, {}, valid_session
-      assigns(:groups).should eq([group])
+      assigns(:groups).should eq(groups)
     end
   end
 
   describe "GET show" do
     it "assigns the requested group as @group" do
-      group = Group.create! valid_attributes
-      get :show, {:id => group.to_param}, valid_session
+      Group.stub(:find).and_return(group)
+      get :show, {:id => "any ID"}, valid_session
       assigns(:group).should eq(group)
     end
   end
@@ -34,43 +36,49 @@ describe GroupsController do
 
   describe "GET edit" do
     it "assigns the requested group as @group" do
-      group = Group.create! valid_attributes
-      get :edit, {:id => group.to_param}, valid_session
+      Group.stub(:find).and_return(group)
+      get :edit, {:id => "any ID"}, valid_session
       assigns(:group).should eq(group)
     end
   end
 
   describe "POST create" do
     describe "with valid params" do
+      before(:each) do
+        Group.stub(:new).and_return(group)
+        group.stub(:save).and_return(true)
+      end
+      
       it "creates a new Group" do
-        expect {
-          post :create, {:group => valid_attributes}, valid_session
-        }.to change(Group, :count).by(1)
+        Group.should_receive(:new)
+             .with(hash_including('these' => 'params'))
+                    
+        post :create, {:group => {'these' => 'params'}}, valid_session
       end
 
       it "assigns a newly created group as @group" do
-        post :create, {:group => valid_attributes}, valid_session
+        post :create, {:group => {'these' => 'params'}}, valid_session
         assigns(:group).should be_a(Group)
         assigns(:group).should be_persisted
       end
 
       it "redirects to the created group" do
-        post :create, {:group => valid_attributes}, valid_session
-        response.should redirect_to(Group.last)
+        post :create, {:group => {'these' => 'params'}}, valid_session
+        response.should redirect_to(group)
       end
     end
 
     describe "with invalid params" do
-      it "assigns a newly created but unsaved group as @group" do
-        # Trigger the behavior that occurs when invalid params are submitted
+      before(:each) do
         Group.any_instance.stub(:save).and_return(false)
+      end
+      
+      it "assigns a newly created but unsaved group as @group" do
         post :create, {:group => {}}, valid_session
         assigns(:group).should be_a_new(Group)
       end
 
       it "re-renders the 'new' template" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        Group.any_instance.stub(:save).and_return(false)
         post :create, {:group => {}}, valid_session
         response.should render_template("new")
       end
@@ -79,59 +87,59 @@ describe GroupsController do
 
   describe "PUT update" do
     describe "with valid params" do
+      before(:each) do
+        Group.stub(:find).and_return(group)
+      end
+      
       it "updates the requested group" do
-        group = Group.create! valid_attributes
-        # Assuming there are no other groups in the database, this
-        # specifies that the Group created on the previous line
-        # receives the :update_attributes message with whatever params are
-        # submitted in the request.
-        Group.any_instance.should_receive(:update_attributes).with({'these' => 'params'})
-        put :update, {:id => group.to_param, :group => {'these' => 'params'}}, valid_session
+        group.should_receive(:update_attributes).with({'these' => 'params'})
+        put :update, {:id => 'some id', :group => {'these' => 'params'}}, valid_session
       end
 
       it "assigns the requested group as @group" do
-        group = Group.create! valid_attributes
-        put :update, {:id => group.to_param, :group => valid_attributes}, valid_session
+        group.stub(:update_attributes).and_return(true)
+        put :update, {:id => 'some id', :group => {'these' => 'params'}}, valid_session
         assigns(:group).should eq(group)
       end
 
       it "redirects to the group" do
-        group = Group.create! valid_attributes
-        put :update, {:id => group.to_param, :group => valid_attributes}, valid_session
+        group.stub(:update_attributes).and_return(true)
+        put :update, {:id => 'some id', :group => {'these' => 'params'}}, valid_session
         response.should redirect_to(group)
       end
     end
 
     describe "with invalid params" do
-      it "assigns the group as @group" do
-        group = Group.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        Group.any_instance.stub(:save).and_return(false)
-        put :update, {:id => group.to_param, :group => {}}, valid_session
+      
+      before(:each) do
+        Group.stub(:find).and_return(group)
+        group.stub(:update_attributes).and_return(false)
+      end
+      
+      it "assigns the group as @group" do  
+        put :update, {:id => "some id"}, valid_session
         assigns(:group).should eq(group)
       end
 
       it "re-renders the 'edit' template" do
-        group = Group.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        Group.any_instance.stub(:save).and_return(false)
-        put :update, {:id => group.to_param, :group => {}}, valid_session
+        put :update, {:id => "some id"}, valid_session
         response.should render_template("edit")
       end
     end
   end
 
   describe "DELETE destroy" do
+    before(:each) do
+      Group.stub(:find).and_return(group)
+    end
+    
     it "destroys the requested group" do
-      group = Group.create! valid_attributes
-      expect {
-        delete :destroy, {:id => group.to_param}, valid_session
-      }.to change(Group, :count).by(-1)
+      group.should_receive(:destroy)  
+      delete :destroy, {:id => "some random id"}, valid_session
     end
 
     it "redirects to the groups list" do
-      group = Group.create! valid_attributes
-      delete :destroy, {:id => group.to_param}, valid_session
+      delete :destroy, {:id => "some random id"}, valid_session
       response.should redirect_to(groups_url)
     end
   end

@@ -21,6 +21,7 @@ end
 
 group :test, :development do
   gem "rspec-rails"
+  gem 'faker'
   gem 'ruby-debug19', :require => 'ruby-debug'
   gem 'launchy'
 end
