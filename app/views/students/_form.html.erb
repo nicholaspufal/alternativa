@@ -17,16 +17,9 @@
 	</div>
 	
 	<div class="control-group">
-		<%= f.label :password, "Senha", :class => "control-label" %>
+		<%= label_tag "student_groups", "Grupos", :class => "control-label" %>
 		<div class="controls">
-			<%= f.password_field :password, :class => "input-xlarge" %>
-		</div>
-	</div>
-	
-	<div class="control-group">
-		<%= f.label :password_confirmation, "Confirmação da senha", :class => "control-label" %>
-		<div class="controls">
-			<%= f.password_field :password_confirmation, :class => "input-xlarge" %>
+			<%= select_tag("student[group_ids][]", options_from_collection_for_select(Group.all, "id", "name", @student.groups.collect(&:id)), {:multiple => true}) %>
 		</div>
 	</div>
 	
