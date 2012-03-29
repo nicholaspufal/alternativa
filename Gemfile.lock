@@ -80,7 +80,7 @@ GEM
     json (1.6.6)
     launchy (2.1.0)
       addressable (~> 2.2.6)
-    less (2.0.11)
+    less (2.0.12)
       commonjs (~> 0.2.0)
       therubyracer (~> 0.9.9)
     less-rails (2.1.8)

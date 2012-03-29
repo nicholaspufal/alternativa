@@ -1,0 +1,36 @@
+<div class="page-header">
+  <h1>Listagem de alunos</h1>
+</div>
+
+<% if @students.present? %>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Nome do aluno</th>
+					<th>E-mail</th>
+					<th>Opções</th>
+				</tr>
+			</thead>
+	
+			<tbody>
+				<% @students.each do |student| %>
+					<% presenter student do |student_presenter| %>
+					<tr>
+						<td><%= student_presenter.name %></td>
+						<td><%= student_presenter.email %></td>
+						<td><%= link_to "Editar", edit_student_path(student) %> / <%= link_to "Remover", student_path(student), :method => :delete, :confirm => "Tem certeza que deseja remover?" %></td>
+					</tr>
+					<% end %>
+				<% end %>
+			</tbody>		
+		</table>
+<% else %>
+<div class="alert alert-block">
+	<a class="close" data-dismiss="alert">×</a>
+	<p>Não existem alunos cadastrados.</p>
+</div>
+	
+<% end %>
+
+		<%= link_to "Cadastrar aluno", new_student_path, :class => "btn btn-primary" %>
+

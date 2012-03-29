@@ -14,11 +14,13 @@
 
 	<tbody>
 		<% @exams.each do |exam| %>
-		<tr>
-			<td><%= link_to exam.title, exam_path(exam)  %></td>
-			<td><%= time_ago_in_words exam.created_at %> atrás</td>
-			<td><%= link_to "Editar", edit_exam_path(exam) %> / <%= link_to "Remover", exam_path(exam), :method => :delete, :confirm => "Tem certeza que deseja remover?" %></td>
-		</tr>
+			<% presenter exam do |exam_presenter| %>
+			<tr>
+				<td><%= exam_presenter.title %></td>
+				<td><%= exam_presenter.created_at %></td>
+				<td><%= link_to "Editar", edit_exam_path(exam) %> / <%= link_to "Remover", exam_path(exam), :method => :delete, :confirm => "Tem certeza que deseja remover?" %></td>
+			</tr>
+			<% end %>
 		<% end %>
 	</tbody>		
 </table>

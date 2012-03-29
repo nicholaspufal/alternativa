@@ -14,11 +14,13 @@
 	
 			<tbody>
 				<% @groups.each do |group| %>
-				<tr>
-					<td><%= link_to group.name, group_path(group)  %></td>
-					<td><%= time_ago_in_words group.created_at %> atrás</td>
-					<td><%= link_to "Editar", edit_group_path(group) %> / <%= link_to "Remover", group_path(group), :method => :delete, :confirm => "Tem certeza que deseja remover?" %></td>
-				</tr>
+					<% presenter group do |group_presenter| %>
+					<tr>
+						<td><%= group_presenter.name %></td>
+						<td><%= group_presenter.created_at %></td>
+						<td><%= link_to "Editar", edit_group_path(group) %> / <%= link_to "Remover", group_path(group), :method => :delete, :confirm => "Tem certeza que deseja remover?" %></td>
+					</tr>
+					<% end %>
 				<% end %>
 			</tbody>		
 		</table>
