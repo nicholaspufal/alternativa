@@ -1,15 +1,19 @@
 $(document).ready(function() {
   //paint the selected option - coming from the database
-  $('.add-on [type=checkbox]:checked').parent().addClass('active');
+  $("input[type='hidden'].hidden_correct")
+                          .filter(function(elem) { 
+                                    return $(this).val() == "t" 
+                                })
+                          .siblings("button")
+                          .addClass("correct_answer");
 
-  //in order to avoid issues with radio buttons, solution was to simulate radio behavior with checkboxes...
-  $('.add-on :checkbox').live("click", function () {	
-    console.log("working");
+  //set to true the closest hidden input, and to false all other ones
+  $("button.control_correct_answer").live("click", function () {
+    parent = $(this).parents("fieldset.question")
+    parent.find("input[type='hidden'].hidden_correct").val("f");
+    parent.find("button.control_correct_answer").removeClass("correct_answer");
 
-  	$(this).parents("fieldset").find(".add-on [type=checkbox]").removeAttr("checked");
-  	$(this).parents("fieldset").find(".add-on [type=checkbox]").parent().removeClass("active");
-
-  	$(this).attr("checked","checked");		
-  	$(this).parent().addClass("active");
+    $(this).toggleClass("correct_answer");
+    $(this).siblings("input[type='hidden'].hidden_correct").val("t");
    });  
 })
