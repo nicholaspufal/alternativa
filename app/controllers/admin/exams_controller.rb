@@ -1,4 +1,4 @@
-class ExamsController < ApplicationController
+class Admin::ExamsController < Admin::AdminController
 
   def index    
     @exams = Exam.all
@@ -22,7 +22,7 @@ class ExamsController < ApplicationController
     
     if @exam.save 
       flash[:notice] = "Prova cadastrada com sucesso!" 
-      redirect_to @exam
+      redirect_to [:admin,@exam]
     else
       render :new
     end
@@ -32,7 +32,8 @@ class ExamsController < ApplicationController
     @exam = Exam.find(params[:id])
     
     if @exam.update_attributes(params[:exam])
-      redirect_to @exam
+      flash[:notice] = "Prova atualizada com sucesso!" 
+      redirect_to [:admin,@exam]
     else
       render :edit
     end
@@ -47,7 +48,7 @@ class ExamsController < ApplicationController
   def destroy
     @exam = Exam.find(params[:id])
     @exam.destroy
-    redirect_to exams_path
+    redirect_to admin_exams_path
   end
   
 end

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe StudentsController do
+describe Admin::StudentsController do
 
   def valid_session
     {}
@@ -61,7 +61,7 @@ describe StudentsController do
 
       it "redirects to the created student" do
         post :create, {:student => {'these' => 'params'}}, valid_session
-        response.should redirect_to(student)
+        response.should redirect_to([:admin, student])
       end
     end
 
@@ -102,7 +102,7 @@ describe StudentsController do
       it "redirects to the student" do
         student.stub(:update_attributes).and_return(true)
         put :update, {:id => 'some id', :student => {'these' => 'params'}}, valid_session
-        response.should redirect_to(student)
+        response.should redirect_to([:admin, student])
       end
     end
 
@@ -137,7 +137,7 @@ describe StudentsController do
 
     it "redirects to the students list" do
       delete :destroy, {:id => "some random id"}, valid_session
-      response.should redirect_to(students_url)
+      response.should redirect_to(admin_students_url)
     end
   end
 

@@ -18,7 +18,7 @@
 					<tr>
 						<td><%= student_presenter.name %></td>
 						<td><%= student_presenter.email %></td>
-						<td><%= link_to "Editar", edit_student_path(student) %> / <%= link_to "Remover", student_path(student), :method => :delete, :confirm => "Tem certeza que deseja remover?" %></td>
+						<td><%= link_to "Editar", edit_admin_student_path(student) %> / <%= link_to "Remover", admin_student_path(student), :method => :delete, :confirm => "Tem certeza que deseja remover?" %></td>
 					</tr>
 					<% end %>
 				<% end %>
@@ -32,5 +32,5 @@
 	
 <% end %>
 
-		<%= link_to "Cadastrar aluno", new_student_path, :class => "btn btn-primary" %>
+		<%= link_to "Cadastrar aluno", new_admin_student_path, :class => "btn btn-primary" %>
 

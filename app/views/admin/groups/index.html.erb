@@ -18,7 +18,7 @@
 					<tr>
 						<td><%= group_presenter.name %></td>
 						<td><%= group_presenter.created_at %></td>
-						<td><%= link_to "Editar", edit_group_path(group) %> / <%= link_to "Remover", group_path(group), :method => :delete, :confirm => "Tem certeza que deseja remover?" %></td>
+						<td><%= link_to "Editar", edit_admin_group_path(group) %> / <%= link_to "Remover", admin_group_path(group), :method => :delete, :confirm => "Tem certeza que deseja remover?" %></td>
 					</tr>
 					<% end %>
 				<% end %>
@@ -32,5 +32,5 @@
 	
 <% end %>
 
-		<%= link_to "Criar novo grupo", new_group_path, :class => "btn btn-primary" %>
+		<%= link_to "Criar novo grupo", new_admin_group_path, :class => "btn btn-primary" %>
 

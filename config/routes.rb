@@ -1,8 +1,13 @@
 AlternativaTcc::Application.routes.draw do
-  root :to => "exams#index"  
-  resources :exams
-  resources :groups
+  root :to => "students#new"  
   resources :students
+  
+  namespace :admin do
+    root :to => "exams#index"  
+    resources :exams
+    resources :groups
+    resources :students
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

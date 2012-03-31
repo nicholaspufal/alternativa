@@ -5,6 +5,7 @@ Funcionalidade: Professor cria avaliação
 	Eu quero criar uma avaliação
 	Para que eu possa disponibilizar uma prova pelo sistema
 	
+	@javascript
 	Cenário: Professor cria uma nova avaliação
 		Dado que eu estou no formulário de cadastro para uma nova avaliação
 		E que eu preenchi todos os campos requeridos para uma avaliação

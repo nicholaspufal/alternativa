@@ -3,26 +3,29 @@
 FactoryGirl.define do
   factory :exam do
     title 'Primeira prova'
-    questions {|q| [q.association(:question)]}
+    
+    after_build do |exam| 
+      exam.questions << FactoryGirl.create(:question)
+    end
   end
   
   factory :question do
     title 'Alguma questão'
-    answers {|a| [a.association(:answer)]}
+
+    after_build do |question| 
+      answer = FactoryGirl.create(:answer, :correct => true)
+      question.answers << answer
+      
+      3.times { question.answers << FactoryGirl.create(:answer) }
+    end
+  end
+  
+  factory :question_with_no_answers, :class => Question do
+    title "Alguma questão"
   end
   
   factory :answer do
     title 'Alguma resposta'
-  end
-  
-  factory :question_with_multiple_correct, :parent => :question do
-    answers do
-      2.times.collect { FactoryGirl.create(:correct_answer) }
-    end  
-  end
-
-  factory :correct_answer, :parent => :answer do
-    correct true
   end
   
 end

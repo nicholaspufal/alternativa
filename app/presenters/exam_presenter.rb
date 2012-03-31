@@ -5,7 +5,7 @@ class ExamPresenter < BasePresenter
   
   def title
     handle_presence exam.title do
-      h.link_to(exam.title, h.exam_path(exam))
+      h.link_to(exam.title, h.admin_exam_path(exam))
     end
   end
   

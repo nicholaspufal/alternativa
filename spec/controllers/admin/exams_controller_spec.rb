@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'ostruct'
 
-describe ExamsController do
+describe Admin::ExamsController do
   
   describe "GET index" do
     it "assigns all exams as @exams" do
@@ -114,7 +114,7 @@ describe ExamsController do
         
       it "redirects to the exam" do
         put :update, :id => @exam.id.to_s
-        response.should redirect_to(@exam)
+        response.should redirect_to([:admin, @exam])
       end
     end
   
@@ -141,7 +141,7 @@ describe ExamsController do
   describe "DELETE destroy" do
     
     before(:each) do
-      @exam = Factory(:exam)
+      @exam = FactoryGirl.create(:exam)
       Exam.stub(:find).and_return(@exam)
     end
     
@@ -153,7 +153,7 @@ describe ExamsController do
   
     it "redirects to the exams list" do
       delete :destroy, :id => @exam.id.to_s
-      response.should redirect_to(exams_url)
+      response.should redirect_to(admin_exams_url)
     end
   end
 

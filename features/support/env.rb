@@ -43,6 +43,10 @@ end
 #   sleep 2
 # end
 
+After() do |scenario|
+  #save_and_open_page if scenario.status == :failed
+end
+
 # You may also want to configure DatabaseCleaner to use different strategies for certain features and scenarios.
 # See the DatabaseCleaner documentation for details. Example:
 #

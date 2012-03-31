@@ -5,7 +5,7 @@ class GroupPresenter < BasePresenter
   
   def name
     handle_presence group.name do
-      h.link_to(group.name, h.group_path(group))
+      h.link_to(group.name, h.admin_group_path(group))
     end
   end
   

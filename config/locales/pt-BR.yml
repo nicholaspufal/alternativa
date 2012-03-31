@@ -245,6 +245,9 @@
       question:
         title: "Pergunta"
         
+      group:
+        name: "Nome do grupo"
+        
       answer:
         title: "Alternativa"
       

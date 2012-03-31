@@ -1,4 +1,4 @@
-<%= form_for(@student, :html => {:class => "form-horizontal"}) do |f| %>
+<%= form_for([:admin, @student], :html => {:class => "form-horizontal"}) do |f| %>
 
 	<%= render "shared/errors_messages", :object => @student %>
 
@@ -13,6 +13,13 @@
 		<%= f.label :email, "E-mail", :class => "control-label" %>
 		<div class="controls">
 			<%= f.text_field :email, :class => "input-xlarge" %>
+		</div>
+	</div>
+	
+	<div class="control-group">
+		<%= label_tag "student_groups", "Grupos", :class => "control-label" %>
+		<div class="controls">
+			<%= select_tag("student[group_ids][]", options_from_collection_for_select(Group.all, "id", "name", @student.groups.collect(&:id)), {:multiple => true}) %>
 		</div>
 	</div>
 	

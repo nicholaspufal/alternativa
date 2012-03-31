@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe GroupsController do
+describe Admin::GroupsController do
 
   def valid_session
     {}
@@ -61,7 +61,7 @@ describe GroupsController do
 
       it "redirects to the created group" do
         post :create, {:group => {'these' => 'params'}}, valid_session
-        response.should redirect_to(group)
+        response.should redirect_to([:admin, group])
       end
     end
 
@@ -102,7 +102,7 @@ describe GroupsController do
       it "redirects to the group" do
         group.stub(:update_attributes).and_return(true)
         put :update, {:id => 'some id', :group => {'these' => 'params'}}, valid_session
-        response.should redirect_to(group)
+        response.should redirect_to([:admin, group])
       end
     end
 
@@ -137,7 +137,7 @@ describe GroupsController do
 
     it "redirects to the groups list" do
       delete :destroy, {:id => "some random id"}, valid_session
-      response.should redirect_to(groups_url)
+      response.should redirect_to(admin_groups_url)
     end
   end
 

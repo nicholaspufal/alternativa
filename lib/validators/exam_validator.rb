@@ -2,6 +2,6 @@
 
 class ExamValidator < ActiveModel::Validator
   def validate(record)
-    record.errors[:base] << "Ao menos uma questão é obrigatória" if record.questions.empty?
+    record.errors[:base] << "Você precisa criar ao menos uma questão" if record.questions.empty?
   end
 end
