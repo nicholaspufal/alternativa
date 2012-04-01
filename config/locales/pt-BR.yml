@@ -241,9 +241,14 @@
     attributes:
       exam:
         title: "Nome da avaliação"
+        
+      questions:
+        weight: "Peso da questão"
+        base: ""
       
       question:
         title: "Pergunta"
+        weight: "Peso da questão"
         
       group:
         name: "Nome do grupo"

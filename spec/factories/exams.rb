@@ -11,6 +11,7 @@ FactoryGirl.define do
   
   factory :question do
     title 'Alguma questão'
+    weight 2.0
 
     after_build do |question| 
       answer = FactoryGirl.create(:answer, :correct => true)

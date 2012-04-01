@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120329231027) do
+ActiveRecord::Schema.define(:version => 20120401221925) do
 
   create_table "answers", :force => true do |t|
     t.string   "title"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(:version => 20120329231027) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "exam_id"
+    t.decimal  "weight"
   end
 
   create_table "results", :force => true do |t|

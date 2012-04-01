@@ -7,6 +7,8 @@ end
 Dado /^que eu preenchi todos os campos requeridos para uma avaliação$/ do
   fill_in "exam_title", :with => "Prova 1"
   
+  select "2.0", :from => "Peso da questão"
+  
   fill_in "exam_questions_attributes_0_title", :with => "Qual a cor do cavalo branco de Napoleão?"
   
   fill_in "exam_questions_attributes_0_answers_attributes_0_title", :with => "Roxo"

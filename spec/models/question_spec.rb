@@ -13,5 +13,9 @@ describe Question do
       3.times { question.answers << FactoryGirl.build(:answer) }
       question.should have_at_least(1).errors_on(:base)
     end
+    
+    it "should have a question weight" do
+      should have(1).errors_on(:weight)
+    end
   end
 end

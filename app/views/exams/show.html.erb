@@ -1,32 +1,27 @@
 <div class="page-header">
   <h1>Visualizando: <%= @exam.title %></h1>
 </div>
-<div class="row">
-  <div class="span16">
-	
-		<% @exam.questions.each_with_index do |question, question_index| %>
-		<div class="question">
-			<h3>Questão #<%= question_index + 1 %></h3>
-			<p><%= nl_to_br(question.title) %></p>
-			<div class="input">
-		    <ul class="inputs-list">
-					<% question.answers.each_with_index do |answer, answer_index| %>
-		      <li>
-		        <label>
-		          <input type="radio" name="optionsRadios<%= question_index %>" value="option1">
-		          <span><%= answer.title %></span>
-		        </label>
-		      </li>
-					<% end %>
-		    </ul>
-			</div>
-	
-		</div>
-		<% end %>
-		
-	</div>
-</div>
 
+<form class="form-horizontal">	
+	<% @exam.questions.each_with_index do |question, question_index| %>
+	<div class="question">
+		<h3>Questão #<%= question_index + 1 %></h3>
+		<p><%= nl_to_br(question.title) %></p>
+		<div class="control-group">
+			<div class="controls">
+				<% question.answers.each_with_index do |answer, answer_index| %>
+		      <label class="radio">
+		         <input type="radio" name="optionsRadios<%= question_index %>" value="<%= answer.title %>" />
+		         <%= answer.title %>
+		       </label>
+				<% end %>
+			</div>
+		</div>
+	</div>
+	<% end %>
+</form>
+
+		
 	<!-- Questões: 
 <% @exam.questions.each_with_index do |question, index| %>
 <br/><br/>
