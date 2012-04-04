@@ -1,7 +1,10 @@
 AlternativaTcc::Application.routes.draw do
   root :to => "students#new"  
   resources :students
-  resources :exams, :only => [:show]
+  
+  resources :exams, :only => [:show] do
+    resources :results, :only => [:show, :new, :create]
+  end
   
   namespace :admin do
     root :to => "exams#index"  

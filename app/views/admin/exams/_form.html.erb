@@ -8,6 +8,13 @@
 			<%= f.text_field :title, :class => "input-xlarge" %>
 		</div>
 	</div>
+	
+	<div class="control-group">
+		<%= label_tag "exam_groups", "Grupos de acesso", :class => "control-label" %>
+		<div class="controls">
+			<%= select_tag("exam[group_ids][]", options_from_collection_for_select(Group.all, "id", "name", @exam.groups.collect(&:id)), {:multiple => true}) %>
+		</div>
+	</div>
 
 	<%= f.fields_for :questions do |question| %>
 		<%= render "question_fields", :builder => question %>
