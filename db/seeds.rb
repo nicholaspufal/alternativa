@@ -1,7 +1,5 @@
 # encoding: utf-8
 
-# como adicionar seeds para Exam e Student? Quero adicionar grupos para cada um deles. Mas não está funcionando...
-
 group = Group.create(name: "Engenharia de Software - Manhã - SENAC")
   
 Teacher.create([
