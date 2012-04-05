@@ -8,15 +8,14 @@ Teacher.create([
     { name: "Professor Pardal", email: "profpardal@gmail.com", password: 123456 }
   ])
   
-student = Student.create([
-    { name: "Joõzinho", email: "joaozinhopnc@gmail.com", password: 123456 }
-  ])
+student = Student.create(name: "Joõzinho", email: "joaozinhopnc@gmail.com", password: 123456)
+student.groups << group
   
-exam = Exam.create([{
-  title: 'Prova de inglês',
+exam = Exam.create(title: 'Prova de inglês',
   questions: Question.create([
     { 
       title: 'My name _____ Robert.',
+      weight: 1.5,
       answers: Answer.create([
           { title: 'are', correct: false },
           { title: 'called', correct: false },
@@ -26,6 +25,7 @@ exam = Exam.create([{
     },
     { 
       title: 'He _______ 25 years old.',
+      weight: 1.5,
       answers: Answer.create([
           { title: 'have', correct: false },
           { title: 'am', correct: false },
@@ -35,6 +35,7 @@ exam = Exam.create([{
     },
     { 
       title: 'The time is 16:40. How would you normally say this?',
+      weight: 1.5,
       answers: Answer.create([
           { title: 'seventeen less twenty', correct: false },
           { title: 'twenty to five', correct: false },
@@ -44,6 +45,7 @@ exam = Exam.create([{
     },
     { 
       title: 'On holiday, I like to sit ___the beach.',
+      weight: 1.5,
       answers: Answer.create([
           { title: 'in', correct: false },
           { title: 'under', correct: false },
@@ -53,6 +55,7 @@ exam = Exam.create([{
     },
     { 
       title: 'The woman ______lives next door is a vegetarian.',
+      weight: 1.5,
       answers: Answer.create([
           { title: 'what', correct: false },
           { title: 'she', correct: false },
@@ -62,6 +65,7 @@ exam = Exam.create([{
     },
     { 
       title: 'Phil and Sharon would like to ______their own house.',
+      weight: 1.5,
       answers: Answer.create([
           { title: 'have', correct: true },
           { title: 'take', correct: false },
@@ -71,6 +75,7 @@ exam = Exam.create([{
     },
     { 
       title: 'The author _____ a fantastic book.',
+      weight: 1.5,
       answers: Answer.create([
           { title: 'written', correct: false },
           { title: 'wrote', correct: true },
@@ -80,6 +85,7 @@ exam = Exam.create([{
     },
     { 
       title: 'Finishing a test is always ______.',
+      weight: 1.5,
       answers: Answer.create([
           { title: 'satisfies', correct: false },
           { title: 'satisfaction', correct: false },
@@ -88,7 +94,8 @@ exam = Exam.create([{
         ])
     }
   ])
-}])
+)
+exam.groups << group
 
 
 
