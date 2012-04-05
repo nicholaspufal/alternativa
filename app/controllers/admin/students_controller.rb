@@ -42,7 +42,7 @@ class Admin::StudentsController < Admin::AdminController
 
   def destroy
     @student = Student.find(params[:id])
-    @student.destroy
+    flash[:notice] = "Aluno removido com sucesso!" if @student.destroy
     redirect_to admin_students_path
   end
 end
