@@ -1,0 +1,26 @@
+<%= form_for([@exam, @assessment], :html => {:class => "form-horizontal answering_form"}) do |f| %>
+
+	<%= render "shared/errors_messages", :object => @exam %>
+	
+	<% @exam.questions.each_with_index do |question, question_index| %>
+	<div id="<%= dom_id(question) %>">
+		<h4><span class="badge badge-inverse"><%= question_index + 1 %></span> <%= question.title %></h4>
+		<hr/>
+		
+		<div class="control-group">
+			<% question.answers.each do |answer| %>
+			<div class="controls" style="margin-left: 0px;">
+				<label>
+					<%= radio_button_tag "answers[][#{question_index}]", answer.title %>
+					<%= answer.title %>
+				</label>
+			</div>
+			<% end %>
+		</div>
+	</div>
+	<% end %>
+
+  <div class="form-actions">
+    <%= f.submit "Finalizar avaliação", :class => "btn btn-primary" %>
+  </div>
+<% end %>

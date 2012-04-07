@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120404221517) do
+ActiveRecord::Schema.define(:version => 20120407002828) do
 
   create_table "answers", :force => true do |t|
     t.string   "title"
@@ -19,6 +19,16 @@ ActiveRecord::Schema.define(:version => 20120404221517) do
     t.datetime "updated_at",                     :null => false
     t.integer  "question_id"
     t.boolean  "correct",     :default => false
+  end
+
+  create_table "assessments", :force => true do |t|
+    t.decimal  "grade"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "exam_id"
+    t.integer  "student_id"
   end
 
   create_table "exams", :force => true do |t|
@@ -49,16 +59,6 @@ ActiveRecord::Schema.define(:version => 20120404221517) do
     t.datetime "updated_at", :null => false
     t.integer  "exam_id"
     t.decimal  "weight"
-  end
-
-  create_table "results", :force => true do |t|
-    t.decimal  "grade"
-    t.datetime "start_time"
-    t.datetime "end_time"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.integer  "exam_id"
-    t.integer  "student_id"
   end
 
   create_table "users", :force => true do |t|

@@ -1,11 +1,10 @@
 AlternativaTcc::Application.routes.draw do
   devise_for :users
 
-  root :to => "students#new"  
-  resources :students
+  root :to => "assessments#index"  
   
-  resources :exams, :only => [:show] do
-    resources :results, :only => [:show, :new, :create]
+  resources :exams do
+    resources :assessments, :only => [:index, :new, :create]
   end
   
   namespace :admin do

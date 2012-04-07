@@ -1,0 +1,31 @@
+<div class="page-header">
+  <h1>Avaliações em execução</h1>
+</div>
+
+<% if @exams.present? %>
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Título</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% @exams.each do |exam| %>
+			<% presenter exam, AssessmentPresenter do |assessment_presenter| %>
+			<tr>
+				<td><%= assessment_presenter.title %></td>
+			</tr>
+			<% end %>
+		<% end %>
+	</tbody>		
+</table>
+<% else %>
+<div class="alert alert-block">
+	<a class="close" data-dismiss="alert">×</a>
+	<p>Não existem provas cadastradas.</p>
+</div>
+
+<% end %>
+
+
