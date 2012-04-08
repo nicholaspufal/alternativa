@@ -12,7 +12,7 @@ class Admin::AdminController < ActionController::Base
   
   def check_admin
     unless current_user.admin?
-     redirect_to root_url, :notice => "Você não tem permissão para acessar a administração." 
+     redirect_to root_url, :alert => "Você não tem permissão para acessar a administração." 
     end
   end
   

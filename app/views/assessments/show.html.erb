@@ -1,1 +1,10 @@
-CHEGOU AQUI :)
+<h3>Sua nota: <%= @checker.grade %></h3>
+
+
+<h3>Questões incorretas</h3>
+
+<ul>
+<% @checker.user_incorrect_questions.each do |incorrect_question| %>
+	<li><%= incorrect_question.title %> - A resposta certa era: <%= incorrect_question.answers.select(&:correct).pop.title %></li>
+<% end %>
+</ul>

@@ -13,12 +13,12 @@ class AssessmentsController < ApplicationController
   def create
     #PENDING: assim como a INDEX, deve ter um before_filter para evitar que um aluno responda uma prova q ja fez
     @exam = Exam.find(params[:exam_id])
-    checker = CheckerService.new(@exam, params[:answers])
-    @assessment = Assessment.new(:exam => @exam, :student => current_user, :grade => checker.grade)
+    @checker = CheckerService.new(@exam, params[:answers])
+    @assessment = Assessment.new(:exam => @exam, :student => current_user, :grade => @checker.grade)
     @assessment.save
     
     # notice aqui? para que? tem utilidade?
-    redirect_to exam_assessment_path(@exam, @assessment), :notice => "Resultado enviado com sucesso."
+    render 'show' 
   end
   
   def show
