@@ -6,4 +6,6 @@ class Student < User
   
   
   validates_presence_of :name, :email
+  
+  attr_accessible :group_ids
 end

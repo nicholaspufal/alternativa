@@ -8,14 +8,20 @@
 			<%= f.text_field :title, :class => "input-xlarge" %>
 		</div>
 	</div>
-	
+
 	<div class="control-group">
-		<%= label_tag "exam_groups", "Grupos de acesso", :class => "control-label" %>
+		<%= hidden_field_tag "exam[group_ids][]", nil %>
+		<label class="control-label">Grupos que acessam</label>
 		<div class="controls">
-			<%= select_tag("exam[group_ids][]", options_from_collection_for_select(Group.all, "id", "name", @exam.groups.collect(&:id)), {:multiple => true}) %>
+			<% Group.all.each do |group| %>
+				<label class="checkbox">
+					<%= check_box_tag "exam[group_ids][]", group.id, @exam.group_ids.include?(group.id) %>
+					<%= group.name %>
+				</label>
+			<% end %>
 		</div>
 	</div>
-
+		
 	<%= f.fields_for :questions do |question| %>
 		<%= render "question_fields", :builder => question %>
 	<% end %>

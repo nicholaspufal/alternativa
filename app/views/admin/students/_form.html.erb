@@ -17,12 +17,18 @@
 	</div>
 	
 	<div class="control-group">
-		<%= label_tag "student_groups", "Grupos", :class => "control-label" %>
+		<%= hidden_field_tag "student[group_ids][]", nil %>
+		<label class="control-label">Grupos</label>
 		<div class="controls">
-			<%= select_tag("student[group_ids][]", options_from_collection_for_select(Group.all, "id", "name", @student.groups.collect(&:id)), {:multiple => true}) %>
+			<% Group.all.each do |group| %>
+				<label class="checkbox">
+					<%= check_box_tag "student[group_ids][]", group.id, @student.group_ids.include?(group.id) %>
+					<%= group.name %>
+				</label>
+			<% end %>
 		</div>
 	</div>
-	
+		
   <div class="form-actions">
     <%= f.submit "Salvar", :class => "btn btn-primary" %>
   </div>
