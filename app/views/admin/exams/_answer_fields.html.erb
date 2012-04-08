@@ -1,7 +1,7 @@
 <div class="control-group">
 	<div class="controls">
 		<%= builder.hidden_field :correct, :class => "hidden_correct" %>
-		<%= button_tag "<i class='icon-ok icon-white'></i>".html_safe, :type => "button", :class => "btn btn-success control_correct_answer" %>
+		<%= button_tag "<i class='icon-ok'></i>".html_safe, :type => "button", :class => "btn control_correct_answer" %>
 		<%= builder.text_field :title, :class => "span6" %> 
 		<%= builder.hidden_field :_destroy, :class => "hidden_destroy" %> 
 		<%= link_to_function "Remover", "remove_field(this)", :class => "btn btn-danger" %> 
