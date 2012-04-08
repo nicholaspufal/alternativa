@@ -1,10 +1,51 @@
-<h3>Sua nota: <%= @checker.grade %></h3>
+<div class="page-header row" style="background-color: #F5F5F5;">
+	<div class="span5">
+		<h2>Resultado da avaliação</h2>
+	</div>
+	<div class="span3 offset3">
+		<h2 class="student_grade">Nota: <%= @checker.grade %></h2>
+	</div>
+</div>
 
+<div class="progress progress-success progress-striped" style="height: 40px;">
+  <div class="bar" style="width: 0%; height: 40px;" id="user_percentage_grade"></div>
+</div>
 
-<h3>Questões incorretas</h3>
+<p style="font-size:17px;">Você acertou <strong><%= @checker.count_user_correct_questions %></strong> de <strong><%= @exam.questions.count %></strong> questões, o que representa <strong><%= @checker.percentage_user_correct_questions %>%</strong> da prova.</p>
 
-<ul>
-<% @checker.user_incorrect_questions.each do |incorrect_question| %>
-	<li><%= incorrect_question.title %> - A resposta certa era: <%= incorrect_question.answers.select(&:correct).pop.title %></li>
+<hr/>
+
+<% if @checker.user_incorrect_questions.empty? %>
+	<h2>Parabéns por ter gabaritado a prova!</h2>
+<% else %>
+	<div class="page-header">
+		<h3>Você errou as seguintes questões:</h3>
+	</div>
+
+	<table class="table table-bordered table-striped">
+	  <thead>
+	    <tr>
+	      <th><i class="icon-question-sign"></i> Questão</th>
+	      <th><i class="icon-ok-sign"></i> Resposta certa</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+		<% @checker.user_incorrect_questions.each do |incorrect_question| %>
+		<tr>
+			<td><%= incorrect_question.title %></td>
+			<td><%= incorrect_question.answers.select(&:correct).pop.title %></td>
+		</tr>
+	<% end %>
+	  </tbody>
+	</table>
 <% end %>
-</ul>
+
+<% content_for :custom_javascript do %>
+  <script>
+		$(document).ready(function(){
+			$("#user_percentage_grade").animate({
+				width: "<%= @checker.percentage_user_correct_questions %>%"
+			})
+		});
+	</script>
+<% end %>

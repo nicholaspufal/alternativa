@@ -5,6 +5,48 @@ describe CheckerService do
     @exam = FactoryGirl.create(:exam)
   end
   
+  context "retrieve the percentage of correct questions" do
+    it "should return the percentage when the user has some answers correct" do
+      answers = [ 
+        {
+          "0"=>"resposta certa",
+          "1"=>"resposta certa",
+          "2"=>"resposta certa",
+          "3"=>"resposta errada"
+        }
+      ]
+
+      checker = CheckerService.new(@exam, answers)
+      checker.percentage_user_correct_questions.should equal(75)
+
+      answers = [ 
+        {
+          "0"=>"resposta errada",
+          "1"=>"resposta errada",
+          "2"=>"resposta certa",
+          "3"=>"resposta errada"
+        }
+      ]
+
+      checker = CheckerService.new(@exam, answers)
+      checker.percentage_user_correct_questions.should equal(25)
+    end
+    
+    it "should return 0 when the user has none of the answers correct" do
+      answers = [ 
+        {
+          "0"=>"resposta errada",
+          "1"=>"resposta errada",
+          "2"=>"resposta errada",
+          "3"=>"resposta errada"
+        }
+      ]
+
+      checker = CheckerService.new(@exam, answers)
+      checker.percentage_user_correct_questions.should equal(0)
+    end
+  end
+  
   context "should calculate the user grade" do
     it "should return the total when not all are correct" do
       answers = [ 
@@ -19,7 +61,7 @@ describe CheckerService do
       checker = CheckerService.new(@exam, answers)
       checker.grade.should == 7.5
     end
-    
+      
     it "should return the total when questions have different weights" do
       exam = FactoryGirl.create(:exam_with_variable_weight_questions)
     

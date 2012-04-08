@@ -27,6 +27,10 @@ class CheckerService
     @exam.questions - user_correct_questions
   end
   
+  def percentage_user_correct_questions
+    ((count_user_correct_questions.to_f / @exam.questions.count) * 100).round(1).to_i
+  end
+  
   def count_user_correct_questions
     user_correct_questions.count
   end

@@ -54,9 +54,11 @@
             <li><%= link_to "Avaliações", root_path %></li>
             <li></li>
           </ul>
+					<% if current_user.present? %>
 					<p class="pull-right">
 						<%= link_to "Logout", destroy_user_session_path, :class => "btn btn-danger pull-right", :method => :delete  %>
 					</p>
+					<% end %>
         </div><!--/.nav-collapse -->
       </div>
     </div>
@@ -75,7 +77,7 @@
 
   </div> <!-- /container -->
 
-
+	<%= yield :custom_javascript %>
 	<%= javascript_tag '$.fx.off = true;' if Rails.env.test? %>
 
 </body>
