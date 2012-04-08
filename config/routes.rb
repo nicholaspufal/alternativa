@@ -3,8 +3,8 @@ AlternativaTcc::Application.routes.draw do
 
   root :to => "assessments#index"  
   
-  resources :exams do
-    resources :assessments, :only => [:index, :new, :create]
+  resources :exams, :only => [:show] do
+    resources :assessments, :only => [:index, :new, :create, :show]
   end
   
   namespace :admin do

@@ -1,9 +1,17 @@
 # encoding: utf-8
 
 FactoryGirl.define do
+  factory :exam_with_variable_weight_questions, :class => Exam do
+    title "Prova complexa"
+    
+    after_build do |exam| 
+      2.times { exam.questions << FactoryGirl.create(:question, :weight => 4.0) }
+      2.times { exam.questions << FactoryGirl.create(:question) }
+    end
+  end
+  
   factory :exam do
     title 'Primeira prova'
-    
     #creating 4 questions for this exam
     after_build do |exam| 
       4.times { exam.questions << FactoryGirl.create(:question) }

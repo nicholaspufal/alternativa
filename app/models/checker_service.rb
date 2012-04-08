@@ -4,6 +4,14 @@ class CheckerService
     @fetch_correct_answers, @correct_questions = [], []
   end
   
+  def grade
+    total = user_correct_questions.collect(&:weight).inject(0.0) do |total, current_weight| 
+      total + current_weight
+    end
+    
+    ((total / total_weight) * 10).round(1)
+  end
+  
   def user_correct_questions
     if @correct_questions.empty?
       @answers[0].each do |key, user_answer|
@@ -37,6 +45,10 @@ class CheckerService
     end
     
     @fetch_correct_answers
+  end
+  
+  def total_weight
+    @exam.questions.collect(&:weight).inject(0.0) { |total_weight, current_weight| total_weight + current_weight }
   end
   
 end

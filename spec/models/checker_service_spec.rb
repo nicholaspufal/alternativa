@@ -5,6 +5,39 @@ describe CheckerService do
     @exam = FactoryGirl.create(:exam)
   end
   
+  context "should calculate the user grade" do
+    it "should return the total when not all are correct" do
+      answers = [ 
+        {
+          "0"=>"resposta certa",
+          "1"=>"resposta certa",
+          "2"=>"resposta certa",
+          "3"=>"resposta errada"
+        }
+      ]
+
+      checker = CheckerService.new(@exam, answers)
+      checker.grade.should == 7.5
+    end
+    
+    it "should return the total when questions have different weights" do
+      exam = FactoryGirl.create(:exam_with_variable_weight_questions)
+    
+      answers = [ 
+        {
+          "0"=>"resposta errada",
+          "1"=>"resposta certa", #got one question correct ~> weight 4
+          "2"=>"resposta errada",
+          "3"=>"resposta errada"
+        }
+      ]
+
+      checker = CheckerService.new(exam, answers)
+      checker.grade.should == 3.3
+    end
+  end
+  
+  
   context "should list all the correct and all the wrong questions" do
     before(:all) do
       @answers = [ 
