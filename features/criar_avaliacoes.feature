@@ -1,6 +1,6 @@
 # language: pt
 
-Funcionalidade: Professor cria avaliação
+Funcionalidade: Professor cria avaliações
 	Como um professor
 	Eu quero criar uma avaliação
 	Para que eu possa disponibilizar uma prova pelo sistema
