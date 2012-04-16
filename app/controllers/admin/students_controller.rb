@@ -9,24 +9,8 @@ class Admin::StudentsController < Admin::AdminController
     respond_with @student
   end
 
-  def new
-    @student = Student.new
-    respond_with @student
-  end
-
   def edit
     @student = Student.find(params[:id])
-  end
-
-  def create
-    @student = Student.new(params[:student])
-    
-    if @student.save 
-      flash[:notice] = "Aluno cadastrado com sucesso!" 
-      redirect_to [:admin, @student]
-    else
-      render :new
-    end
   end
 
   def update
