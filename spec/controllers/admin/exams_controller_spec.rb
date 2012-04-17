@@ -3,6 +3,8 @@ require 'ostruct'
 
 describe Admin::ExamsController do
   
+  login_admin
+  
   describe "GET index" do
     it "assigns all exams as @exams" do
      response.should be_successful 
@@ -49,9 +51,9 @@ describe Admin::ExamsController do
         post :create
       end
   
-      it "redirects to the created exam" do
+      it "redirects to the exams listing" do
         post :create
-        response.should redirect_to(Exam.last)
+        response.should redirect_to admin_exams_path
       end
     end
   
