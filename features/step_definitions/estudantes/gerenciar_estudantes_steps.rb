@@ -18,7 +18,7 @@ Quando /^eu visitar novamente a página de edição do aluno$/ do
 end
 
 Então /^eu devo ver todos os grupos desmarcados$/ do
-  true
+  page.should_not have_field("Meu grupo de teste 1", :checked => true)
 end
 
 

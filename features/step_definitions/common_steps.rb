@@ -11,6 +11,10 @@ Dado /^que eu sou um aluno e realizei login$/ do
   click_button "login"
 end
 
+Dado /^que existem avaliações em execução$/ do
+  Factory(:exam)
+end
+
 Dado /^que eu sou um administrador e realizei login$/ do  
   email = 'profpardal@gmail.com'
   password = '123456'

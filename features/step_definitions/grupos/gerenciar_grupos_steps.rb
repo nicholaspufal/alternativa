@@ -5,9 +5,12 @@ Dado /^que eu estou no formulário de cadastro de grupo$/ do
 end
 
 Dado /^que eu preenchi todos os campos requeridos para um grupo$/ do
-  true
+  @name = "Engenharia de SW Manhã SENAC"
+  fill_in "Nome", :with => @name
 end
 
 Então /^eu devo ver o novo grupo na listagem$/ do
-  true
+  visit admin_groups_path
+  save_and_open_page
+  page.should have_content(@name)
 end

@@ -5,8 +5,9 @@ Funcionalidade: Aluno responde avaliação
 	Eu quero responder uma avaliação
 	Para que eu possa garantir a minha nota 
 	
-Contexto: Estou logado como administrador
+Contexto: Estou logado como aluno
 	Dado que eu sou um aluno e realizei login	
+	E que existem avaliações em execução
 	
 Cenário: Aluno responde avaliação
 	Dado que eu entrei em uma avaliação em execução
