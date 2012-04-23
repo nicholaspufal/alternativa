@@ -11,6 +11,5 @@ end
 
 Então /^eu devo ver o novo grupo na listagem$/ do
   visit admin_groups_path
-  save_and_open_page
   page.should have_content(@name)
 end

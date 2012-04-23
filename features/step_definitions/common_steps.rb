@@ -1,18 +1,22 @@
 #encoding: utf-8
 
-Dado /^que eu sou um aluno e realizei login$/ do
+Dado /^que eu sou o aluno "(.*)", estou no grupo "(.*)" e realizei login$/ do |student_name, group_name|
   email = 'joaozinho@gmail.com'
   password = '123456'
-  Student.new(:email => email, :name => "Joãozinho", :password => password, :password_confirmation => password).save!
-
+  student = Student.new(:email => email, :name => student_name, :password => password, :password_confirmation => password)
+  student.groups << Group.new(:name => group_name)
+  student.save!
+  
   visit root_path
   fill_in "E-mail", :with => email
   fill_in "Senha", :with => password
   click_button "login"
 end
 
-Dado /^que existem avaliações em execução$/ do
-  Factory(:exam)
+Dado /^que existe a avaliação "(.*)" disponível ao grupo "(.*)" em execução$/ do |exam_title, group_name|
+  exam = FactoryGirl.create(:exam, :title => exam_title)
+  exam.groups << Group.find_or_create_by_name(group_name)
+  exam.save!
 end
 
 Dado /^que eu sou um administrador e realizei login$/ do  
