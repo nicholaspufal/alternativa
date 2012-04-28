@@ -1,8 +1,8 @@
 class AssessmentsController < ApplicationController
   def index
-    #PENDING: deve listar apenas as provas que o estudante tem acesso e que nao realizou ainda
-    @exams = Exam.all
-    respond_with @exams
+    @exams = Exam.scoped
+    @upcoming_exams = @exams.upcoming_exams
+    @current_exams = @exams.current_exams
   end
     
   def new

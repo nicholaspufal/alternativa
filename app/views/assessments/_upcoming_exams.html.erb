@@ -1,0 +1,32 @@
+<div class="page-header">
+  <h2>Próximas avaliações</h2>
+</div>
+
+<% if upcoming_exams.present? %>
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Nome da avaliação</th>
+			<th>Agendada para</th>
+			<th>Termina em</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<% upcoming_exams.each do |exam| %>
+			<% presenter exam, AssessmentPresenter do |assessment_presenter| %>
+			<tr>
+				<td><%= assessment_presenter.title %></td>
+				<td><%= assessment_presenter.start_time %></td>
+				<td><%= assessment_presenter.end_time %></td>
+			</tr>
+			<% end %>
+		<% end %>
+	</tbody>		
+</table>
+<% else %>
+<div class="alert alert-block">
+	<a class="close" data-dismiss="alert">×</a>
+	<p>Não existem outras avaliações agendadas.</p>
+</div>
+<% end %>

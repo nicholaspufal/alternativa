@@ -11,12 +11,12 @@
   <div class="bar" style="width: 0%; height: 40px;" id="user_percentage_grade"></div>
 </div>
 
-<p style="font-size:17px;">Você acertou <strong><%= @checker.count_user_correct_questions %></strong> de <strong><%= @exam.questions.count %></strong> questões, o que representa <strong><%= @checker.percentage_user_correct_questions %>%</strong> da prova.</p>
+<p style="font-size:17px;">Você acertou <strong><%= @checker.count_user_correct_questions %></strong> de <strong><%= @exam.questions.count %></strong> questões, o que representa <strong><%= @checker.percentage_user_correct_questions %>%</strong> da avaliação.</p>
 
 <hr/>
 
 <% if @checker.user_incorrect_questions.empty? %>
-	<h2>Parabéns! Você acertou todas as questões da prova.</h2>
+	<h2>Parabéns! Você acertou todas as questões da avaliação.</h2>
 <% else %>
 	<div class="page-header">
 		<h3>Você errou as seguintes questões:</h3>
@@ -39,6 +39,10 @@
 	  </tbody>
 	</table>
 <% end %>
+
+<hr/>
+
+<%= link_to_function "Imprimir esta página", "javascript:print()", :class => "btn btn-large btn-info" %>
 
 <% content_for :custom_javascript do %>
   <script>

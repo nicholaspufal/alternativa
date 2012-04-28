@@ -55,5 +55,9 @@ class BasePresenter
       "Não informado"
     end
   end
+  
+  def brazilian_datetime_format(datetime)
+    datetime.strftime("%d/%m/%Y %H:%M") if datetime.present?
+  end
 
 end

@@ -4,10 +4,14 @@ class Exam < ActiveRecord::Base
   has_many :assessments
   has_and_belongs_to_many :groups
   
-  DURATION_OPTIONS = (0.5..6).step(0.5).collect { |x| [x.to_s, x] }
+  validates_presence_of :title
+  validates_with ExamValidator
   
   accepts_nested_attributes_for :questions, :reject_if => lambda { |a| a[:title].blank? }, :allow_destroy => true
+    
+  DURATION_OPTIONS = (0.5..6).step(0.5).collect { |x| [x.to_s, x] }
   
-  validates_presence_of :title
-  validates_with ExamValidator  
+  scope :upcoming_exams, lambda { where("start_time > ?", Time.now) }
+  
+  scope :current_exams, lambda { where("start_time <= ? AND start_time > ?", Time.now, 6.hours.ago) }
 end

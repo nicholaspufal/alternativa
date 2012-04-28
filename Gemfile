@@ -29,6 +29,7 @@ group :test, :development do
 end
 
 group :test do
+  gem 'time-warp'
   gem "capybara-webkit"
   gem "capybara"
   gem "cucumber-rails"
