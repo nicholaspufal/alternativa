@@ -10,11 +10,12 @@
 	</div>
 	
 	<div class="control-group">
-		<%= f.label :start_date, "Agendar avaliação para", :class => "control-label" %>
+		<%= f.label :start_time, "Agendar avaliação para", :class => "control-label" %>
 		<div class="controls">
-			<%= f.text_field :start_date, :class => "input-xlarge datepicker" %>
+			<%= f.text_field :start_time, :class => "input-xlarge datetimepicker", :value => brazilian_datetime_format(@exam.start_time) %>
 		</div>
 	</div>
+	
 
 	<div class="control-group">
 		<%= f.label :duration, "Duração", :class => "control-label" %>

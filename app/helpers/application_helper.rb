@@ -1,6 +1,10 @@
 # encoding: utf-8
 
 module ApplicationHelper
+  def brazilian_datetime_format(datetime)
+    datetime.strftime("%d/%m/%Y %H:%M") if datetime.present?
+  end
+    
   def nl_to_br(text)
     text.gsub(/\n/,"<br/>").html_safe
   end

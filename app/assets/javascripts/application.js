@@ -7,6 +7,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
+//= require jquery.ui.datepicker-pt-BR
+//= require jquery-ui-timepicker-addon
+//= require jquery-ui-timepicker-pt-BR
 //= require twitter/bootstrap
 //= require_tree .
 
@@ -33,9 +36,9 @@ function add_fields(link, association, content) {
 
 $(document).ready(function() {
   
-  $.datepicker.setDefaults( $.datepicker.regional[ "pt-BR" ] );
+  //$.datepicker.setDefaults( $.datepicker.regional[ "pt-BR" ] );
 
-	$(".datepicker").datepicker({ minDate: 0, maxDate: "+10M" });
+	$(".datetimepicker").timepicker();
 
 	$('.alert-message').alert();
 });
