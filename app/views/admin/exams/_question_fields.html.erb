@@ -4,7 +4,11 @@
 <div class="control-group">
 	<%= builder.label :weight, nil, :class => "control-label" %>
 	<div class="controls">
-		<%= builder.select :weight, options_for_select(Question::QUESTION_WEIGHTS, builder.object.weight), :prompt => "Selecione uma opção" %>
+		<%= builder.select :weight, 
+				options_for_select(Question::QUESTION_WEIGHTS, builder.object.weight), 
+				{ :prompt => "--" }, 
+				{ :class => "span1" } 
+			%>
 	</div>
 </div>
 	

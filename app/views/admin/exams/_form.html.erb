@@ -8,7 +8,27 @@
 			<%= f.text_field :title, :class => "input-xlarge" %>
 		</div>
 	</div>
+	
+	<div class="control-group">
+		<%= f.label :start_date, "Agendar avaliação para", :class => "control-label" %>
+		<div class="controls">
+			<%= f.text_field :start_date, :class => "input-xlarge datepicker" %>
+		</div>
+	</div>
 
+	<div class="control-group">
+		<%= f.label :duration, "Duração", :class => "control-label" %>
+		<div class="controls">
+				<%= 
+					f.select :duration, 
+					options_for_select(Exam::DURATION_OPTIONS, @exam.duration),
+					{:prompt => "--"}, 
+					{:class => "span1"}
+				%>
+				<span class="inline">hora(s)</span>
+		</div>
+	</div>
+	
 	<div class="control-group">
 		<%= hidden_field_tag "exam[group_ids][]", nil %>
 		<label class="control-label">Grupos que acessam</label>
