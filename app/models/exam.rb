@@ -4,7 +4,7 @@ class Exam < ActiveRecord::Base
   has_many :assessments
   has_and_belongs_to_many :groups
   
-  validates_presence_of :title
+  validates_presence_of :title, :duration, :start_time
   validates_with ExamValidator
   
   accepts_nested_attributes_for :questions, :reject_if => lambda { |a| a[:title].blank? }, :allow_destroy => true

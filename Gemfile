@@ -22,13 +22,13 @@ group :development do
 end
 
 group :test, :development do
-  gem "rspec-rails"
   gem 'faker'
   gem 'ruby-debug19', :require => 'ruby-debug'
   gem 'launchy'
 end
 
 group :test do
+  gem "rspec-rails"
   gem 'time-warp'
   gem "capybara-webkit"
   gem "capybara"
