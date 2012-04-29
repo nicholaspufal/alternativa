@@ -241,6 +241,8 @@
     attributes:
       exam:
         title: "Nome da avaliação"
+        duration: "Duração"
+        start_time: "Agendar para"
         
       questions:
         weight: "Peso da questão"

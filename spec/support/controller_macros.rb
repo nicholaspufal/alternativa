@@ -9,8 +9,7 @@ module ControllerMacros
 
   def login_user
     before(:each) do
-      @student = Factory.create(:student)
-      @student.confirm! # or set a confirmed_at inside the factory. Only necessary if you are using the confirmable module
+      @student = FactoryGirl.create(:student)
       sign_in @student
     end
   end
