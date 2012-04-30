@@ -1,5 +1,30 @@
+<div id="counter_wrapper">
+	<div id="counter">
+		<%= ((@exam.start_time + @exam.duration.hours - Time.now) / 60).round %> minutos
+	</div>
+</div>
+
 <div class="page-header">
   <h1>Respondendo a avaliação <small>(<%= @exam.title %>)</small></h1>
 </div>
 
 <%= render "form" %>
+
+<% content_for :custom_javascript do %>
+  <script>
+		$(document).ready(function () {
+		  var top = $('#counter').offset().top - parseFloat($('#counter').css('margin-top').replace(/auto/,0));
+		
+		  $(window).scroll(function (event) {
+		    var y = $(this).scrollTop();
+
+		    if (y >= top) {
+		      $('#counter').addClass('counter_fixed');
+		    } else {
+		      $('#counter').removeClass('counter_fixed');
+		    }
+
+		  });
+		})
+	</script>
+<% end %>
