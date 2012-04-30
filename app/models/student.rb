@@ -8,4 +8,8 @@ class Student < User
   validates_presence_of :name, :email
   
   attr_accessible :group_ids
+  
+  def exams_done
+    assessments.collect(&:exam)
+  end
 end

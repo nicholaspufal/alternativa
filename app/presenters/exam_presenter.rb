@@ -13,4 +13,12 @@ class ExamPresenter < BasePresenter
     "#{h.time_ago_in_words(exam.created_at)} atrás"
   end
   
+  def start_time
+    brazilian_datetime_format(exam.start_time)
+  end
+  
+  def end_time
+    brazilian_datetime_format(exam.start_time + exam.duration.hours)
+  end
+  
 end

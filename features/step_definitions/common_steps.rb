@@ -14,7 +14,7 @@ Dado /^que eu sou o aluno "(.*)", estou no grupo "(.*)" e realizei login$/ do |s
 end
 
 Dado /^que existe a avaliação "(.*)" disponível ao grupo "(.*)" em execução$/ do |exam_title, group_name|
-  exam = FactoryGirl.create(:exam, :title => exam_title)
+  exam = FactoryGirl.create(:exam, :title => exam_title, :start_time => Time.now)
   exam.groups << Group.find_or_create_by_name(group_name)
   exam.save!
 end

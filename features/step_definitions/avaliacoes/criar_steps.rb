@@ -7,6 +7,10 @@ end
 Dado /^que eu preenchi todos os campos requeridos para uma avaliação$/ do
   fill_in "exam_title", :with => "Prova 1"
   
+  fill_in "Agendar para", :with => "18/04/2012 14:30"
+  
+  select "3.0", :from => "Duração"
+  
   select "2.0", :from => "Peso da questão"
   
   fill_in "exam_questions_attributes_0_title", :with => "Qual a cor do cavalo branco de Napoleão?"
