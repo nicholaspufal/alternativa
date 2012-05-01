@@ -14,4 +14,13 @@ class Exam < ActiveRecord::Base
   scope :upcoming_exams, lambda { where("start_time > ?", Time.now) }
   
   scope :current_exams, lambda { where("start_time <= ? AND start_time > ?", Time.now, 6.hours.ago) }
+  
+  def end_time
+    start_time + duration.hours
+  end
+  
+  def time_remaining
+    (end_time - Time.now / 60).round
+  end
+  
 end

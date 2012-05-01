@@ -33,5 +33,13 @@ describe Exam do
       end
     end
   end
-
+  
+  context "times" do
+    it "should inform the end time for the exam" do
+      exam = FactoryGirl.create(:exam, 
+                                :start_time => Time.parse("2012-04-28 15:20"),
+                                :duration => 2.5)
+      exam.end_time.should == Time.parse("2012-04-28 17:50")
+    end
+  end
 end

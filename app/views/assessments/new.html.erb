@@ -1,7 +1,5 @@
-<div id="counter_wrapper">
-	<div id="counter">
-		<%= ((@exam.start_time + @exam.duration.hours - Time.now) / 60).round %> minutos
-	</div>
+<div id="counter">
+	<%= show_counter(@exam) %>
 </div>
 
 <div class="page-header">
@@ -13,18 +11,35 @@
 <% content_for :custom_javascript do %>
   <script>
 		$(document).ready(function () {
-		  var top = $('#counter').offset().top - parseFloat($('#counter').css('margin-top').replace(/auto/,0));
+			//create plugin from this
+			var elem = $('#counter');
+		  var top = elem.offset().top - parseFloat(elem.css('margin-top').replace(/auto/,0));
+			var counter_time = parseInt(elem.html().replace(/\s+[a-zA-Z]+/gi,''));
 		
 		  $(window).scroll(function (event) {
 		    var y = $(this).scrollTop();
 
 		    if (y >= top) {
-		      $('#counter').addClass('counter_fixed');
+		      elem.addClass('counter_fixed');
 		    } else {
-		      $('#counter').removeClass('counter_fixed');
+		      elem.removeClass('counter_fixed');
 		    }
 
 		  });
+		
+			var update_counter = setTimeout(function() {
+					counter_time--;
+					elem.html("Restam " + counter_time + " minuto(s)");
+
+			    if (counter_time == 0) {
+						elem.html("Tempo esgotado");
+			   		clearTimeout();
+			    } 
+					else	{
+			    	setTimeout(arguments.callee, 60000);
+			    }
+			}, 60000);
+		
 		})
 	</script>
 <% end %>
