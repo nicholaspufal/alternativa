@@ -31,7 +31,7 @@
 					counter_time--;
 					elem.html("Restam " + counter_time + " minuto(s)");
 
-			    if (counter_time == 0) {
+			    if (counter_time == 0 || isNaN(counter_time)) {
 						elem.html("Tempo esgotado");
 			   		clearTimeout();
 			    } 
