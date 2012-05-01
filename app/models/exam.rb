@@ -19,8 +19,4 @@ class Exam < ActiveRecord::Base
     start_time + duration.hours
   end
   
-  def time_remaining
-    (end_time - Time.now / 60).round
-  end
-  
 end

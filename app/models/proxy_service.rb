@@ -10,4 +10,8 @@ class ProxyService
   def self.check_first_time(student, exam)
     Assessment.answered_exam?(student, exam).empty?
   end
+  
+  def self.check_time_remaining(exam)
+    Time.now <= exam.end_time
+  end
 end

@@ -42,5 +42,21 @@ describe ProxyService do
       
       ProxyService.check_first_time(@current_user, @exam).should eq(false)
     end
+    
+    it "should check if the exam was submitted in time" do
+      pretend_now_is(Time.parse("2012-04-28 15:30")) do 
+        @exam.update_attribute(:duration, 2)
+        
+        @exam.update_attribute(:start_time, Time.parse("2012-04-28 16:30"))
+        ProxyService.check_time_remaining(@exam).should eq(true)
+        
+        @exam.update_attribute(:start_time, Time.parse("2012-04-28 17:40"))
+        debugger
+        ProxyService.check_time_remaining(@exam).should eq(false)
+        
+        @exam.update_attribute(:start_time, Time.parse("2012-04-28 17:30"))
+        ProxyService.check_time_remaining(@exam).should eq(true)
+      end
+    end
   end
 end
