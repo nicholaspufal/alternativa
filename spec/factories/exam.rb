@@ -3,8 +3,8 @@
 FactoryGirl.define do
   factory :exam_with_variable_weight_questions, :class => Exam do
     title "Prova complexa"
-    duration 3.5
     start_time Time.parse("2012-04-20 14:40")
+    end_time Time.parse("2012-04-20 17:40")
     
     after_build do |exam| 
       2.times { exam.questions << FactoryGirl.create(:question, :weight => 4.0) }
@@ -14,8 +14,8 @@ FactoryGirl.define do
   
   factory :exam do
     title 'Primeira prova'
-    duration 3.5
     start_time Time.parse("2012-04-20 14:40")
+    end_time Time.parse("2012-04-20 17:40")
     
     #creating 4 questions for this exam
     after_build do |exam| 

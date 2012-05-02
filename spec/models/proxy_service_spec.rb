@@ -19,16 +19,16 @@ describe ProxyService do
       @current_user.groups << @group
       
       pretend_now_is(Time.parse("2012-04-28 15:30")) do 
-        @exam.update_attribute(:start_time, Time.parse("2012-04-28 09:29"))
+        @exam.update_attributes(:start_time => Time.parse("2012-04-28 09:29"), :end_time => Time.parse("2012-04-28 10:29"))        
         ProxyService.check_availability(@current_user, @exam).should eq(false)
         
-        @exam.update_attribute(:start_time, Time.parse("2012-04-29 15:30"))
+        @exam.update_attributes(:start_time => Time.parse("2012-04-29 15:30"), :end_time => Time.parse("2012-04-29 16:29"))
         ProxyService.check_availability(@current_user, @exam).should eq(false)
         
-        @exam.update_attribute(:start_time, Time.parse("2012-04-27 15:30"))
+        @exam.update_attributes(:start_time => Time.parse("2012-04-27 15:30"), :end_time => Time.parse("2012-04-27 16:29"))
         ProxyService.check_availability(@current_user, @exam).should eq(false)
         
-        @exam.update_attribute(:start_time, Time.parse("2012-04-28 15:29"))
+        @exam.update_attributes(:start_time => Time.parse("2012-04-28 15:29"), :end_time => Time.parse("2012-04-28 16:29"))
         ProxyService.check_availability(@current_user, @exam).should eq(true)
       end
     end
@@ -44,17 +44,14 @@ describe ProxyService do
     end
     
     it "should check if the exam was submitted in time" do
-      pretend_now_is(Time.parse("2012-04-28 15:30")) do 
-        @exam.update_attribute(:duration, 2)
-        
-        @exam.update_attribute(:start_time, Time.parse("2012-04-28 16:30"))
+      pretend_now_is(Time.parse("2012-04-28 15:29")) do 
+        @exam.update_attributes(:start_time => Time.parse("2012-04-28 15:00"), :end_time => Time.parse("2012-04-28 16:29"))
         ProxyService.check_time_remaining(@exam).should eq(true)
         
-        @exam.update_attribute(:start_time, Time.parse("2012-04-28 17:40"))
-        debugger
+        @exam.update_attributes(:start_time => Time.parse("2012-04-28 13:29"), :end_time => Time.parse("2012-04-28 15:27"))
         ProxyService.check_time_remaining(@exam).should eq(false)
         
-        @exam.update_attribute(:start_time, Time.parse("2012-04-28 17:30"))
+        @exam.update_attributes(:start_time => Time.parse("2012-04-28 13:31"), :end_time => Time.parse("2012-04-28 16:29"))
         ProxyService.check_time_remaining(@exam).should eq(true)
       end
     end

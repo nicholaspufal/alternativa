@@ -242,7 +242,8 @@
       exam:
         title: "Nome da avaliação"
         duration: "Duração"
-        start_time: "Agendar para"
+        start_time: "Data/hora início"
+        end_time: "Data/hora fim"
         
       questions:
         weight: "Peso da questão"

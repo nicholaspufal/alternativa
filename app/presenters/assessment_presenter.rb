@@ -18,7 +18,7 @@ class AssessmentPresenter < BasePresenter
   end
   
   def end_time
-    brazilian_datetime_format(exam.start_time + exam.duration.hours)
+    brazilian_datetime_format(exam.end_time)
   end
   
 end

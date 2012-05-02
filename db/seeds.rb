@@ -6,10 +6,11 @@ Teacher.create([
     { name: "Professor Pardal", email: "profpardal@gmail.com", password: 123456 }
   ])
   
-student = Student.create(name: "Joõzinho", email: "joaozinhopnc@gmail.com", password: 123456)
+student = Student.create(name: "Joaõzinho", email: "joaozinho@gmail.com", password: 123456)
 student.groups << group
   
-exam = Exam.create(title: 'Prova de inglês',
+exam = Exam.create(title: 'Prova de inglês', start_time: Time.parse("2012-04-05 16:30"),
+  end_time: Time.parse("2012-04-05 18:30"),
   questions: Question.create([
     { 
       title: 'My name _____ Robert.',

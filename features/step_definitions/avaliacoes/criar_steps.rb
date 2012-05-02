@@ -7,9 +7,8 @@ end
 Dado /^que eu preenchi todos os campos requeridos para uma avaliação$/ do
   fill_in "exam_title", :with => "Prova 1"
   
-  fill_in "Agendar para", :with => "18/04/2012 14:30"
-  
-  select "3.0", :from => "Duração"
+  fill_in "Data/hora início", :with => "18/04/2012 14:30"
+  fill_in "Data/hora fim", :with => "18/04/2012 16:30"
   
   select "2.0", :from => "Peso da questão"
   

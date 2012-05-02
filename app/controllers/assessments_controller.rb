@@ -48,6 +48,11 @@ class AssessmentsController < ApplicationController
       flash[:alert] = "A avaliação que você tentou acessar já foi respondida. Apenas uma tentativa é permitida."
       redirect_to root_path and return
     end
+    
+    unless ProxyService.check_time_remaining(exam)
+      flash[:alert] = "Tarde demais. O tempo para responder a avaliação expirou." 
+      redirect_to root_path and return
+    end
   end
   
   def redirect_admin

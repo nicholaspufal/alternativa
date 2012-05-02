@@ -10,26 +10,20 @@
 	</div>
 	
 	<div class="control-group">
-		<%= f.label :start_time, "Agendar para", :class => "control-label" %>
+		<%= f.label :start_time, "Data/hora início", :class => "control-label" %>
 		<div class="controls">
 			<%= f.text_field :start_time, :class => "input-xlarge datetimepicker", :value => brazilian_datetime_format(@exam.start_time) %>
 		</div>
 	</div>
 	
-
 	<div class="control-group">
-		<%= f.label :duration, "Duração", :class => "control-label" %>
+		<%= f.label :end_time, "Data/hora fim", :class => "control-label" %>
 		<div class="controls">
-				<%= 
-					f.select :duration, 
-					options_for_select(Exam::DURATION_OPTIONS, @exam.duration),
-					{:prompt => "--"}, 
-					{:class => "span1"}
-				%>
-				<span class="inline">hora(s)</span>
+			<%= f.text_field :end_time, :class => "input-xlarge datetimepicker", :value => brazilian_datetime_format(@exam.end_time) %>
 		</div>
 	</div>
 	
+
 	<div class="control-group">
 		<%= hidden_field_tag "exam[group_ids][]", nil %>
 		<label class="control-label">Grupos que acessam</label>

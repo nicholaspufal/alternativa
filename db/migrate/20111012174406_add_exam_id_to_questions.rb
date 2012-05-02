@@ -1,4 +1,4 @@
-class AddExamsIdToQuestions < ActiveRecord::Migration
+class AddExamIdToQuestions < ActiveRecord::Migration
   def up
     add_column :questions, :exam_id, :integer
   end
