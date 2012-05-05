@@ -1,0 +1,28 @@
+<div class="page-header">
+  <h1>Relatórios por grupos</h1>
+</div>
+
+<% if @groups.present? %>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Selecione um grupo</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<% @groups.each do |group| %>
+				<% presenter group, GroupReportPresenter do |group_report_presenter| %>
+				<tr>
+					<td><%= group_report_presenter.name %></td>
+				</tr>
+				<% end %>
+			<% end %>
+		</tbody>		
+	</table>
+<% else %>
+	<div class="alert alert-block">
+		<a class="close" data-dismiss="alert">×</a>
+		<p>Não existem grupos cadastrados.</p>
+	</div>
+<% end %>
