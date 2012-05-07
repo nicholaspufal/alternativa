@@ -4,11 +4,6 @@ class Admin::StudentsController < Admin::AdminController
     respond_with @students
   end
 
-  def show
-    @student = Student.find(params[:id])
-    respond_with @student
-  end
-
   def edit
     @student = Student.find(params[:id])
   end
@@ -18,7 +13,7 @@ class Admin::StudentsController < Admin::AdminController
 
     if @student.update_attributes(params[:student])
       flash[:notice] = "Aluno atualizado com sucesso!" 
-      redirect_to [:admin, @student]
+      redirect_to admin_students_path
     else
       render :edit
     end

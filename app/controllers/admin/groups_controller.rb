@@ -4,11 +4,6 @@ class Admin::GroupsController < Admin::AdminController
     respond_with @groups
   end
 
-  def show
-    @group = Group.find(params[:id])
-    respond_with @group
-  end
-
   def new
     @group = Group.new
     respond_with @group
@@ -23,7 +18,7 @@ class Admin::GroupsController < Admin::AdminController
 
     if @group.save 
       flash[:notice] = "Grupo cadastrado com sucesso!" 
-      redirect_to [:admin, @group]
+      redirect_to admin_groups_path
     else
       render :new
     end
@@ -34,7 +29,7 @@ class Admin::GroupsController < Admin::AdminController
     
     if @group.update_attributes(params[:group])
       flash[:notice] = "Grupo atualizado com sucesso!" 
-      redirect_to [:admin,@group]
+      redirect_to admin_groups_path
     else
       render :edit
     end

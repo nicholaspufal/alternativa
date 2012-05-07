@@ -14,14 +14,6 @@ describe Admin::GroupsController do
     end
   end
 
-  describe "GET show" do
-    it "assigns the requested group as @group" do
-      Group.stub(:find).and_return(group)
-      get :show, {:id => "any ID"}
-      assigns(:group).should eq(group)
-    end
-  end
-
   describe "GET new" do
     it "assigns a new group as @group" do
       get :new, {}
@@ -57,9 +49,9 @@ describe Admin::GroupsController do
         assigns(:group).should be_persisted
       end
 
-      it "redirects to the created group" do
+      it "redirects to the groups index" do
         post :create, {:group => {'these' => 'params'}}
-        response.should redirect_to([:admin, group])
+        response.should redirect_to admin_groups_path
       end
     end
 
@@ -97,10 +89,10 @@ describe Admin::GroupsController do
         assigns(:group).should eq(group)
       end
 
-      it "redirects to the group" do
+      it "redirects to the groups index" do
         group.stub(:update_attributes).and_return(true)
         put :update, {:id => 'some id', :group => {'these' => 'params'}}
-        response.should redirect_to([:admin, group])
+        response.should redirect_to admin_groups_path
       end
     end
 

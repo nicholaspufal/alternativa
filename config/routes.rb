@@ -10,8 +10,8 @@ AlternativaTcc::Application.routes.draw do
   namespace :admin do
     root :to => "exams#index"  
     resources :exams
-    resources :groups
-    resources :students, :except => [:show]
+    resources :groups, :except => [:show]
+    resources :students, :except => [:show, :new, :create]
     
     scope "/groups_reports" do
       root :to => "groups_reports#index", :as => "groups_reports"

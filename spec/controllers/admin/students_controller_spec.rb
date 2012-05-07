@@ -14,14 +14,6 @@ describe Admin::StudentsController do
     end
   end
 
-  describe "GET show" do
-    it "assigns the requested student as @student" do
-      Student.stub(:find).and_return(student)
-      get :show, {:id => "any ID"}
-      assigns(:student).should eq(student)
-    end
-  end
-
   describe "GET edit" do
     it "assigns the requested student as @student" do
       Student.stub(:find).and_return(student)
@@ -47,10 +39,10 @@ describe Admin::StudentsController do
         assigns(:student).should eq(student)
       end
 
-      it "redirects to the student" do
+      it "redirects to the students index" do
         student.stub(:update_attributes).and_return(true)
         put :update, {:id => 'some id', :student => {'these' => 'params'}}
-        response.should redirect_to([:admin, student])
+        response.should redirect_to admin_students_path
       end
     end
 
