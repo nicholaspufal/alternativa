@@ -12,4 +12,8 @@ class Student < User
   def exams_done
     assessments.collect(&:exam)
   end
+  
+  def find_exams_where_group(group)
+    exams.select { |exam| exam.groups.include?(group) } 
+  end
 end

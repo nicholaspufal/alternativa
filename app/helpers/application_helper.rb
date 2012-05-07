@@ -25,4 +25,18 @@ module ApplicationHelper
       end
     end.join.html_safe
   end
+  
+  def group_table_generator(exams)
+    content_tag :table, :class => "table table-striped table-bordered table-condensed reports_table" do
+      content_tag :thead do
+        content_tag :tr do
+          content_tag :th 
+          exams.each do |exam|
+            content_tag :th, exam.title
+          end
+        end
+      end
+    end
+  end
+  
 end

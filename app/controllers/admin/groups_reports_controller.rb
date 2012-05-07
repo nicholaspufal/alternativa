@@ -5,5 +5,6 @@ class Admin::GroupsReportsController < Admin::ReportsController
   
   def show
     @group = Group.find(params[:id])
+    @exams = @group.exams
   end
 end

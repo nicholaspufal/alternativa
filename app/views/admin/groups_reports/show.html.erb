@@ -21,49 +21,27 @@
 		<option>10</option>
 	</select>
 
-	  <button type="submit" class="btn btn-info">Filtrar</button>
+	<button type="submit" class="btn btn-info">Filtrar</button>
 </form>
+
 
 <table class="table table-striped table-bordered table-condensed reports_table">
 	<thead>
 		<tr>
 			<th></th>
-			<th>Avaliação 1</th>
-			<th>Avaliação 2</th>
-			<th>Avaliação 3</th>
+			<% @exams.each do |exam| %>
+				<th><%= exam.title %></th>
+			<% end %>
 		</tr>
 	</thead>
-
 	<tbody>
-			<tr>
-				<td>Aline</td>
-				<td>9.8</td>
-				<td>6.5</td>
-				<td>0.0</td>
-			</tr>
-			<tr>
-				<td>Bruna</td>
-				<td>9.8</td>
-				<td>6.5</td>
-				<td>0.0</td>
-			</tr>
-			<tr>
-				<td>Gabriela</td>
-				<td>9.8</td>
-				<td>6.5</td>
-				<td>0.0</td>
-			</tr>
-			<tr>
-				<td>Natasha</td>
-				<td>9.8</td>
-				<td>6.5</td>
-				<td>0.0</td>
-			</tr>
-			<tr>
-				<td>Patrícia</td>
-				<td>9.8</td>
-				<td>6.5</td>
-				<td>0.0</td>
-			</tr>
+		<tr>
+			<% @group.students.each do |student| %>
+				<td><%= student.name %></td>
+				<% @exams.each do |exam| %>
+					<td><%= Assessment.find_result(student, exam) ? Assessment.find_result(student, exam).grade : "0.0" %></td>
+				<% end %>	
+			<% end %>
+		</tr>
 	</tbody>		
 </table>
