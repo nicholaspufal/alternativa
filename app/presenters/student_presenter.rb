@@ -7,7 +7,7 @@ class StudentPresenter < BasePresenter
   
   def name
     handle_presence student.name do
-      h.link_to(student.name, h.admin_student_path(student))
+      h.link_to(student.name, h.edit_admin_student_path(student))
     end
   end
   

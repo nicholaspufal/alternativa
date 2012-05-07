@@ -11,7 +11,7 @@ AlternativaTcc::Application.routes.draw do
     root :to => "exams#index"  
     resources :exams
     resources :groups
-    resources :students
+    resources :students, :except => [:show]
     
     scope "/groups_reports" do
       root :to => "groups_reports#index", :as => "groups_reports"
