@@ -36,9 +36,11 @@ class BasePresenter
     @template
   end 
   
-  def self.presents(name)
-    define_method(name) do
-      @object
+  def self.presents(*name)
+    name.each do |name|
+      define_method(name) do
+        @object
+      end
     end
   end
   

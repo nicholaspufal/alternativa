@@ -1,45 +1,48 @@
 <%= go_back_button "Ver outro grupo", admin_groups_reports_path %>
 
-<div class="page-header">
-  <h2>Relatórios para o grupo <%= @group.name %></h2>
-</div>
+<% presenter @group, GroupReportPresenter do |group_report_presenter| %>
+	<div class="page-header">
+	  <h2>Relatórios por grupo <small>(<%= group_report_presenter.name_show %>)</small></h2>
+	</div>
 
-<form class="well form-inline">
-	<span>Filtrar alunos por média:</span>
-	<select class="input-small">
-		<option>1</option>
-		<option>2</option>
-		<option>3</option>
-		<option>4</option>
-		<option>5</option>
-		<option>6</option>
-		<option>7</option>
-		<option>8</option>
-		<option>9</option>
-		<option>10</option>
-	</select>
+	<!-- filtering form -->
+	<%= form_tag admin_group_report_path(@group), :method => :get, :class => "well form-inline" do %>
+		<span>Filtrar alunos por nota:</span>
+		
+		<%= select_tag "filter", 
+				options_for_select((1..10).collect{|n| ["#{n}", n] }, params[:filter]), 
+				:class => "input-small",
+				:prompt => "--" %>
+				
+		<%= submit_tag "Filtrar", :class => "btn btn-info" %>	
+		
+		<%= link_to "Cancelar filtro", admin_group_report_path(@group), :class => "btn btn-danger" if params[:filter] %>
+	<% end %>
+	<!-- // -->
 
-	<button type="submit" class="btn btn-info">Filtrar</button>
-</form>
-
-
-<table class="table table-striped table-bordered table-condensed reports_table">
-	<thead>
-		<tr>
-			<th></th>
-			<% @exams.each do |exam| %>
-				<th><%= exam.title %></th>
-			<% end %>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<% @group.students.each do |student| %>
-				<td><%= student.name %></td>
+	<table class="table table-bordered table-condensed reports_table">
+		<thead>
+			<tr>
+				<th></th>
 				<% @exams.each do |exam| %>
-					<td><%= Assessment.find_result(student, exam) ? Assessment.find_result(student, exam).grade : "0.0" %></td>
-				<% end %>	
-			<% end %>
-		</tr>
-	</tbody>		
-</table>
+					<th><%= group_report_presenter.exam_title(exam) %></th>
+				<% end %>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<% @group.students.each do |student| %>
+				
+					<td><%= group_report_presenter.student_name(student) %></td>
+										
+					<% @exams.each do |exam| %>
+						<td class="<%= group_report_presenter.result_class(student, exam) %>">
+							<%= group_report_presenter.result(student, exam) %>
+						</td>
+					<% end %>	
+					
+				<% end %>
+			</tr>
+		</tbody>		
+	</table>
+<% end %>
