@@ -4,6 +4,11 @@ module ApplicationHelper
   def brazilian_datetime_format(datetime)
     datetime.strftime("%d/%m/%Y %H:%M") if datetime.present?
   end
+  
+  def go_back_button(text, url, options = {})
+    options.merge!({:class => "btn"})
+    link_to "<i class='icon-arrow-left'></i> #{text}".html_safe, url, options
+  end
     
   def nl_to_br(text)
     text.gsub(/\n/,"<br/>").html_safe

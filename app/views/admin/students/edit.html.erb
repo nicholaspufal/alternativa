@@ -1,5 +1,7 @@
+<%= go_back_button "Editar outro aluno", admin_students_path %>
+
 <div class="page-header">
-  <h1>Editar aluno</h1>
+  <h1>Editar aluno <small>(<%= @student.name %>)</small></h1>
 </div>
 
 <%= render "form" %>

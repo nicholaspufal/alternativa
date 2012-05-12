@@ -1,5 +1,7 @@
+<%= go_back_button "Editar outro grupo", admin_groups_path %>
+
 <div class="page-header">
-  <h1>Editar grupo</h1>
+  <h1>Editar grupo <small>(<%= @group.name %>)</small></h1>
 </div>
 
 <%= render "form" %>

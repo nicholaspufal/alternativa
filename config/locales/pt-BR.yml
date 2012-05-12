@@ -209,8 +209,8 @@
       accepted: "deve ser aceito"
       empty: "não pode ficar vazio"
       blank: "não pode ficar em branco"
-      too_long: "é muito longo (máximo: %{count} caracteres)"
-      too_short: "é muito curto (mínimo: %{count} caracteres)"
+      too_long: "é muito longa (máximo: %{count} caracteres)"
+      too_short: "é muito curta (mínimo: %{count} caracteres)"
       wrong_length: "não possui o tamanho esperado (%{count} caracteres)"
       not_a_number: "não é um número"
       not_an_integer: "não é um número inteiro"
@@ -239,6 +239,12 @@
         format: "%{attribute} %{message}"
     
     attributes:
+      user: 
+        password: "Senha"
+        password_confirmation: "Confirmação da senha"
+        name: "Nome completo"
+        email: "E-mail"
+        
       exam:
         title: "Nome da avaliação"
         duration: "Duração"

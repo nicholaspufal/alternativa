@@ -1,5 +1,7 @@
+<%= go_back_button "Editar outra avaliação", admin_exams_path %>
+
 <div class="page-header">
-  <h1>Editar avaliação</h1>
+  <h1>Editar avaliação <small>(<%= @exam.title %>)</small></h1>
 </div>
 
 <%= render "form" %>
