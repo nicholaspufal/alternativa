@@ -1,1 +1,28 @@
-teste estudantes
+<div class="page-header">
+  <h1>Relatórios por aluno</h1>
+</div>
+
+<% if @students.present? %>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Selecione um aluno</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<% @students.each do |student| %>
+				<% presenter student, StudentReportPresenter do |student_report_presenter| %>
+				<tr>
+					<td><%= student_report_presenter.name %></td>
+				</tr>
+				<% end %>
+			<% end %>
+		</tbody>		
+	</table>
+<% else %>
+	<div class="alert alert-block">
+		<a class="close" data-dismiss="alert">×</a>
+		<p>Não existem alunos cadastrados.</p>
+	</div>
+<% end %>

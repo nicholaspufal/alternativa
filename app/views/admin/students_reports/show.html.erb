@@ -1,0 +1,25 @@
+<%= go_back_button "Ver outro aluno", admin_students_reports_path %>
+
+<% presenter @student, StudentReportPresenter do |student_report_presenter| %>
+	<div class="page-header">
+	  <h2>Relatórios por aluno <small>(<%= student_report_presenter.name_show %>)</small></h2>
+	</div>
+
+	<div class="tabbable">
+	  <ul class="nav nav-tabs">
+			<% @groups.each_with_index do |group, index| %>
+				<li class="<%= "active" if index == 0 %>"><a href="#group<%= index %>" data-toggle="tab"><%= student_report_presenter.group_name(group) %></a></li>
+			<% end %>
+	  </ul>
+
+
+	  <div class="tab-content">
+			<% @groups.each_with_index do |group, index| %>
+				<div class="tab-pane <%= "active" if index == 0 %>" id="group<%= index %>">
+		      <%= render "table", :group => group, :student_report_presenter => student_report_presenter %>
+		    </div>
+			<% end %>
+	  </div>
+	</div>
+	
+<% end %>

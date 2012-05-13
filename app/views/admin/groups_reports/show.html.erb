@@ -7,7 +7,7 @@
 
 	<!-- filtering form -->
 	<%= form_tag admin_group_report_path(@group), :method => :get, :class => "well form-inline" do %>
-		<span>Filtrar alunos por nota:</span>
+		<span>Filtrar  por nota:</span>
 		
 		<%= select_tag "filter", 
 				options_for_select((1..10).collect{|n| ["#{n}", n] }, params[:filter]), 
@@ -30,19 +30,17 @@
 			</tr>
 		</thead>
 		<tbody>
+			<% @group.students.each do |student| %>
 			<tr>
-				<% @group.students.each do |student| %>
-				
 					<td><%= group_report_presenter.student_name(student) %></td>
 										
 					<% @exams.each do |exam| %>
 						<td class="<%= group_report_presenter.result_class(student, exam) %>">
 							<%= group_report_presenter.result(student, exam) %>
 						</td>
-					<% end %>	
-					
-				<% end %>
+					<% end %>						
 			</tr>
+			<% end %>
 		</tbody>		
 	</table>
 <% end %>

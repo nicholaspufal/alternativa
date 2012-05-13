@@ -1,0 +1,14 @@
+<table class="table table-bordered table-condensed table-striped reports_table">
+	<tbody>
+		<% group.exams.each do |exam| %>
+		<tr>
+			<td>
+				<%= student_report_presenter.exam_title(exam) %>
+			</td>
+			<td>
+				<%= student_report_presenter.result(@student, exam) %>
+			</td>
+		</tr>
+		<% end %>	
+	</tbody>		
+</table>

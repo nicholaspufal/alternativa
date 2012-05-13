@@ -16,7 +16,9 @@ class GroupReportPresenter < BasePresenter
   end
   
   def student_name(student)
-    handle_presence student.name
+    handle_presence student.name do
+      h.link_to student.name, h.admin_student_report_path(student), :target => "_blank"
+    end
   end
   
   def result(student, exam)

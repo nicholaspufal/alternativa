@@ -1,9 +1,8 @@
 AlternativaTcc::Application.routes.draw do
-  devise_for :students
+  devise_for :students, :controllers => { :registrations => "registrations" }
   
-  devise_for :users, :skip => [:registrations]
+  devise_for :users, :controllers => { :registrations => "registrations" }, :skip => [:registrations]
 
-  
   root :to => "assessments#index"  
   
   resources :exams, :only => [:show] do
