@@ -2,6 +2,7 @@
 
 class AssessmentsController < ApplicationController
   before_filter :check_access, :only => [:new, :create, :show]
+  before_filter :check_answers, :only => [:create]
   before_filter :redirect_admin
   
   def index
@@ -52,6 +53,13 @@ class AssessmentsController < ApplicationController
     unless ProxyService.check_time_remaining(exam)
       flash[:alert] = "Tarde demais. O tempo para responder a avaliação expirou." 
       redirect_to root_path and return
+    end
+  end
+  
+  def check_answers
+    unless params[:answers]
+      flash[:alert] = "Você precisa responder ao menos uma questão." 
+      redirect_to new_exam_assessment_path(params[:exam_id]) and return
     end
   end
   
