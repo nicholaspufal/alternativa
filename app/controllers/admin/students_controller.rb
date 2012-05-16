@@ -1,7 +1,7 @@
 class Admin::StudentsController < Admin::AdminController
   
   def index
-    @students = Student.scoped
+    @students = Student.scoped.order("lower(name) ASC")
     @active_students = @students.active_students
     @pending_students = @students.pending_students
   end
@@ -29,7 +29,7 @@ class Admin::StudentsController < Admin::AdminController
   
   def toggle_status
     @student = Student.find(params[:student_id])
-    flash[:notice] = "Aluno atualizado com sucesso" if @student.toggle_status
+    flash[:notice] = "Acesso modificado para o aluno #{@student.name}!" if @student.toggle_status
     redirect_to admin_students_path
   end
 end

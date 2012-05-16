@@ -1,6 +1,6 @@
 class Admin::GroupsReportsController < Admin::ReportsController
   def index
-    @groups = Group.all
+    @groups = Group.order("lower(name) ASC").all
   end
   
   def show

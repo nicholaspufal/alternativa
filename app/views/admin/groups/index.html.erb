@@ -16,9 +16,12 @@
 				<% @groups.each do |group| %>
 					<% presenter group do |group_presenter| %>
 					<tr>
-						<td><%= group_presenter.name %></td>
-						<td><%= group_presenter.created_at %></td>
-						<td><%= link_to "Editar", edit_admin_group_path(group) %> / <%= link_to "Remover", admin_group_path(group), :method => :delete, :confirm => "Tem certeza que deseja remover?" %></td>
+						<td width="40%"><%= group_presenter.name %></td>
+						<td width="30%"><%= group_presenter.created_at %></td>
+						<td>
+							<%= link_to "Editar", edit_admin_group_path(group), :class => "btn btn-info" %>
+							<%= link_to "Remover", admin_group_path(group), :method => :delete, :confirm => "Tem certeza que deseja remover?", :class => "btn btn-danger" %>
+						</td>
 					</tr>
 					<% end %>
 				<% end %>

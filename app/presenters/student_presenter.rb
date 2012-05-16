@@ -11,4 +11,16 @@ class StudentPresenter < BasePresenter
     end
   end
   
+  def toggle_access
+    if student.active?
+      text = "Bloquear acesso"
+      html_class = "btn-success" 
+    else
+      text = "Liberar acesso"
+      html_class = "btn-danger" 
+    end
+    
+    h.link_to text, h.admin_student_toggle_status_path(student), :method => :put, :class => "btn #{html_class}"
+  end
+  
 end

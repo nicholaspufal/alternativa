@@ -1,7 +1,7 @@
 class Admin::ExamsController < Admin::AdminController
 
   def index    
-    @exams = Exam.order("start_time ASC")
+    @exams = Exam.order("start_time DESC")
   end
   
   def new

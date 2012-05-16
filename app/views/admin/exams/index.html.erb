@@ -20,7 +20,9 @@
 				<td><%= exam_presenter.title %></td>
 				<td><%= exam_presenter.start_time %></td>
 				<td><%= exam_presenter.end_time %></td>
-				<td><%= link_to "Editar", edit_admin_exam_path(exam) %> / <%= link_to "Remover", admin_exam_path(exam), :method => :delete, :confirm => "Tem certeza que deseja remover?" %></td>
+				<td>
+				<%= link_to "Editar", edit_admin_exam_path(exam), :class => "btn btn-info"  %>
+				<%= link_to "Remover", admin_exam_path(exam), :method => :delete, :confirm => "Tem certeza que deseja remover?", :class => "btn btn-danger" %></td>
 			</tr>
 			<% end %>
 		<% end %>

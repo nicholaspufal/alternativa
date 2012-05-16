@@ -1,6 +1,6 @@
 class Admin::GroupsController < Admin::AdminController
   def index
-    @groups = Group.all
+    @groups = Group.order("lower(name) ASC").all
     respond_with @groups
   end
 

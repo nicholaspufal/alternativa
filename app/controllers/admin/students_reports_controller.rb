@@ -1,6 +1,6 @@
 class Admin::StudentsReportsController < Admin::ReportsController
   def index
-    @students = Student.all
+    @students = Student.order("lower(name) ASC").all
   end
   
   def show
