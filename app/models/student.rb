@@ -7,6 +7,13 @@ class Student < User
   
   attr_accessible :group_ids
   
+  scope :active_students, where(:active => true)  
+  scope :pending_students, where(:active => false)
+  
+  def toggle_status
+    toggle!(:active)
+  end
+  
   def exams_done
     assessments.collect(&:exam)
   end

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Student do  
-  describe "exams" do
+  context "exams" do
     before(:each) do
       @group = FactoryGirl.create(:group, :name => "ABC")
       
@@ -31,4 +31,16 @@ describe Student do
       @student.find_exams_where_group(@group).should eq([@exam1, @exam2, @exam4])
     end
   end
+  
+  it "should have an API to change the status" do
+    student = FactoryGirl.create(:student)
+    student.active?.should eq(false)
+  
+    student.toggle_status
+    student.active?.should eq(true)
+  
+    student.toggle_status
+    student.active?.should eq(false)
+  end
+
 end

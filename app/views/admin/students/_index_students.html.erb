@@ -1,0 +1,20 @@
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Nome do aluno</th>
+			<th>E-mail</th>
+			<th>Opções</th>
+		</tr>
+	</thead>
+	<tbody>
+	<% students.each do |student| %>
+		<% presenter student do |student_presenter| %>
+		<tr>
+			<td><%= student_presenter.name %></td>
+			<td><%= student_presenter.email %></td>
+			<td><%= link_to "Editar", edit_admin_student_path(student) %> / <%= link_to "Remover", admin_student_path(student), :method => :delete, :confirm => "Tem certeza que deseja remover?" %> / <%= link_to "Liberar acesso", admin_student_toggle_status_path(student), :method => :put %></td>
+		</tr>
+		<% end %>
+	<% end %>
+	</tbody>		
+</table>

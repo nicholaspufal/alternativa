@@ -3,31 +3,31 @@
 </div>
 
 <% if @students.present? %>
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th>Nome do aluno</th>
-					<th>E-mail</th>
-					<th>Opções</th>
-				</tr>
-			</thead>
-	
-			<tbody>
-				<% @students.each do |student| %>
-					<% presenter student do |student_presenter| %>
-					<tr>
-						<td><%= student_presenter.name %></td>
-						<td><%= student_presenter.email %></td>
-						<td><%= link_to "Editar", edit_admin_student_path(student) %> / <%= link_to "Remover", admin_student_path(student), :method => :delete, :confirm => "Tem certeza que deseja remover?" %></td>
-					</tr>
-					<% end %>
-				<% end %>
-			</tbody>		
-		</table>
-<% else %>
-<div class="alert alert-block">
-	<a class="close" data-dismiss="alert">×</a>
-	<p>Não existem alunos cadastrados.</p>
+
+<div class="page-header">
+	<h3>Alunos ativos</h3>
 </div>
+	
+	<% if @active_students.any? %>
+		<%= render "index_students", :students => @active_students %>
+	<% else %>
+		<p>Não existem alunos ativos.</p>
+	<% end %>
+	
+	<div class="page-header">
+		<h3>Alunos aguardando ativação</h3>
+	</div>
+	
+	<% if @pending_students.any? %>
+		<%= render "index_students", :students => @pending_students %>
+	<% else %>
+		<p>Não existem alunos pendentes.</p>
+	<% end %>	
+	
+<% else %>
+	<div class="alert alert-block">
+		<a class="close" data-dismiss="alert">×</a>
+		<p>Não existem alunos cadastrados.</p>
+	</div>
 <% end %>
 

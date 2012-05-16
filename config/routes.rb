@@ -13,7 +13,9 @@ AlternativaTcc::Application.routes.draw do
     root :to => "exams#index"  
     resources :exams
     resources :groups, :except => [:show]
-    resources :students, :except => [:show, :new, :create]
+    resources :students, :except => [:show, :new, :create] do
+      put :toggle_status, :as => "toggle_status"
+    end
     
     scope "/groups_reports" do
       root :to => "groups_reports#index", :as => "groups_reports"

@@ -1,7 +1,9 @@
 class Admin::StudentsController < Admin::AdminController
+  
   def index
-    @students = Student.all
-    respond_with @students
+    @students = Student.scoped
+    @active_students = @students.active_students
+    @pending_students = @students.pending_students
   end
 
   def edit
@@ -22,6 +24,12 @@ class Admin::StudentsController < Admin::AdminController
   def destroy
     @student = Student.find(params[:id])
     flash[:notice] = "Aluno removido com sucesso!" if @student.destroy
+    redirect_to admin_students_path
+  end
+  
+  def toggle_status
+    @student = Student.find(params[:student_id])
+    flash[:notice] = "Aluno atualizado com sucesso" if @student.toggle_status
     redirect_to admin_students_path
   end
 end
