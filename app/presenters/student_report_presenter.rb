@@ -21,8 +21,24 @@ class StudentReportPresenter < BasePresenter
     handle_presence exam.title 
   end
   
+  def show_result(exam)
+    if result = result(student,exam)
+      result
+    else
+      h.content_tag :span, "N/R", :class => "hover_me", :"data-content" => "O aluno ainda não realizou esta prova.", :"data-original-title" => "Não realizada (N/R)"
+    end
+  end
+  
+  def has_assessments?
+    student.exams.present? && student.groups.present?
+  end
+  
+  private
+  
   def result(student, exam)
-    Assessment.find_result(student, exam) ? Assessment.find_result(student, exam).grade : 0.0
+    if assessment = Assessment.find_result(student, exam)
+      assessment.grade 
+    end
   end
   
 end

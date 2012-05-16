@@ -4,43 +4,47 @@
 	<div class="page-header">
 	  <h2>Relatórios por grupo <small>(<%= group_report_presenter.name_show %>)</small></h2>
 	</div>
-
-	<!-- filtering form -->
-	<%= form_tag admin_group_report_path(@group), :method => :get, :class => "well form-inline" do %>
-		<span>Filtrar  por nota:</span>
+	
+	<% if group_report_presenter.has_assessments? %>
+		<!-- filtering form -->
+		<%= form_tag admin_group_report_path(@group), :method => :get, :class => "well form-inline" do %>
+			<span>Filtrar  por nota:</span>
 		
-		<%= select_tag "filter", 
-				options_for_select((1..10).collect{|n| ["#{n}", n] }, params[:filter]), 
-				:class => "input-small",
-				:prompt => "--" %>
+			<%= select_tag "filter", 
+					options_for_select((1..10).collect{|n| ["#{n}", n] }, params[:filter]), 
+					:class => "input-small",
+					:prompt => "--" %>
 				
-		<%= submit_tag "Filtrar", :class => "btn btn-info" %>	
+			<%= submit_tag "Filtrar", :class => "btn btn-info" %>	
 		
-		<%= link_to "Cancelar filtro", admin_group_report_path(@group), :class => "btn btn-danger" if params[:filter] %>
-	<% end %>
-	<!-- // -->
+			<%= link_to "Cancelar filtro", admin_group_report_path(@group), :class => "btn btn-danger" if params[:filter] %>
+		<% end %>
+		<!-- // -->
 
-	<table class="table table-bordered table-condensed reports_table">
-		<thead>
-			<tr>
-				<th></th>
-				<% @exams.each do |exam| %>
-					<th><%= group_report_presenter.exam_title(exam) %></th>
-				<% end %>
-			</tr>
-		</thead>
-		<tbody>
-			<% @group.students.each do |student| %>
-			<tr>
-					<td><%= group_report_presenter.student_name(student) %></td>
-										
+		<table class="table table-bordered table-condensed reports_table">
+			<thead>
+				<tr>
+					<th></th>
 					<% @exams.each do |exam| %>
-						<td class="<%= group_report_presenter.result_class(student, exam) %>">
-							<%= group_report_presenter.result(student, exam) %>
-						</td>
-					<% end %>						
-			</tr>
-			<% end %>
-		</tbody>		
-	</table>
+						<th><%= group_report_presenter.exam_title(exam) %></th>
+					<% end %>
+				</tr>
+			</thead>
+			<tbody>
+				<% @group.students.each do |student| %>
+				<tr>
+						<td><%= group_report_presenter.student_name(student) %></td>
+										
+						<% @exams.each do |exam| %>
+							<td class="<%= group_report_presenter.result_class(student, exam) %>">
+								<%= group_report_presenter.show_result(student, exam) %>
+							</td>
+						<% end %>						
+				</tr>
+				<% end %>
+			</tbody>		
+		</table>
+	<% else %>
+		<p>Ainda não foram gerados relatórios para este grupo.</p>
+	<% end %>
 <% end %>

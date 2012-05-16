@@ -1,3 +1,5 @@
+#encoding: utf-8
+
 class GroupReportPresenter < BasePresenter 
   presents :group
   
@@ -21,14 +23,28 @@ class GroupReportPresenter < BasePresenter
     end
   end
   
-  def result(student, exam)
-    Assessment.find_result(student, exam) ? Assessment.find_result(student, exam).grade : 0.0
+  def show_result(student, exam)
+    if result = result(student,exam)
+      result
+    else
+      h.content_tag :span, "N/R", :class => "hover_me", :"data-content" => "O aluno ainda não realizou esta prova.", :"data-original-title" => "Não realizada (N/R)"
+    end
   end
   
   def result_class(student, exam)
     if has_filter?
-      result(student, exam) < filter_params ? "under_grade" : "over_grade"
+      if result = result(student,exam)
+        if result < filter_params
+          "under_grade"
+        else
+          "over_grade"
+        end
+      end
     end
+  end
+  
+  def has_assessments?
+    group.exams.present? && group.students.present?
   end
   
   private
@@ -39,5 +55,11 @@ class GroupReportPresenter < BasePresenter
   
   def filter_params
     h.params[:filter].to_f
+  end
+  
+  def result(student, exam)
+    if assessment = Assessment.find_result(student, exam)
+      assessment.grade 
+    end
   end
 end

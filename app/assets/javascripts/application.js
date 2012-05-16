@@ -79,4 +79,6 @@ $(document).ready(function() {
   $('.dropdown-toggle').dropdown();
   
 	$('.alert-message').alert();
+	
+	$("span[class='hover_me']").popover();
 });
