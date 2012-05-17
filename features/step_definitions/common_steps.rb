@@ -3,9 +3,14 @@
 Dado /^que eu sou o aluno "(.*)", estou no grupo "(.*)" e realizei login$/ do |student_name, group_name|
   email = 'joaozinho@gmail.com'
   password = '123456'
-  student = Student.new(:email => email, :name => student_name, :password => password, :password_confirmation => password)
-  student.groups << Group.new(:name => group_name)
-  student.save!
+  student = FactoryGirl.create( :student, 
+                                :email => email, 
+                                :name => student_name, 
+                                :password => password, 
+                                :password_confirmation => password, 
+                                :active => true )
+                                
+  student.groups << FactoryGirl.create(:group, :name => group_name)
   
   visit root_path
   fill_in "E-mail", :with => email
@@ -22,8 +27,13 @@ end
 Dado /^que eu sou um administrador e realizei login$/ do  
   email = 'profpardal@gmail.com'
   password = '123456'
-  Teacher.new(:email => email, :password => password, :password_confirmation => password).save!
-
+  
+  FactoryGirl.create( :teacher,
+                      :email => email, 
+                      :password => password, 
+                      :password_confirmation => password, 
+                      :active => true )
+  
   visit admin_root_path
   fill_in "E-mail", :with => email
   fill_in "Senha", :with => password
