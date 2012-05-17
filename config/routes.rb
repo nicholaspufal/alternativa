@@ -1,14 +1,22 @@
 AlternativaTcc::Application.routes.draw do
+  #devise
   devise_for :students, :controllers => { :registrations => "registrations" }
   
   devise_for :users, :controllers => { :registrations => "registrations" }, :skip => [:registrations]
 
+  #/
   root :to => "assessments#index"  
   
   resources :exams, :only => [:show] do
     resources :assessments, :only => [:index, :new, :create, :show]
   end
   
+  scope "/results" do
+    root :to => "results#index", :as => "results"
+    #match "/:id" => "results#show", :constraints => { :id => /\d+/ }, :as => "student_report"
+  end
+  
+  #/admin
   namespace :admin do
     root :to => "exams#index"  
     resources :exams

@@ -1,7 +1,7 @@
 #encoding: utf-8
 
 Dado /^que eu sou o aluno "(.*)", estou no grupo "(.*)" e realizei login$/ do |student_name, group_name|
-  email = 'joaozinho@gmail.com'
+  email = 'aluno_qualquercoisa@gmail.com'
   password = '123456'
   student = FactoryGirl.create( :student, 
                                 :email => email, 
@@ -25,7 +25,7 @@ Dado /^que existe a avaliação "(.*)" disponível ao grupo "(.*)" em execução
 end
 
 Dado /^que eu sou um administrador e realizei login$/ do  
-  email = 'profpardal@gmail.com'
+  email = 'professor_qualquercoisa@gmail.com'
   password = '123456'
   
   FactoryGirl.create( :teacher,

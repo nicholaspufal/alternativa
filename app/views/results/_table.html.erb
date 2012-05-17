@@ -1,0 +1,18 @@
+<% if group.exams.any? %>
+	<table class="table table-bordered table-condensed table-striped reports_table">
+		<tbody>
+			<% group.exams.each do |exam| %>
+			<tr>
+				<td>
+					<%= result_presenter.exam_title(exam) %>
+				</td>
+				<td>
+					<%= result_presenter.show_result(exam) %>
+				</td>
+			</tr>
+			<% end %>	
+		</tbody>		
+	</table>
+<% else %>
+	<p>Você ainda não realizou nenhuma prova dentro deste grupo.</p>
+<% end %>

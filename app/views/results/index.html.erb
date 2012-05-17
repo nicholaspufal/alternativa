@@ -1,0 +1,27 @@
+<% presenter current_user, ResultPresenter do |result_presenter| %>
+	<div class="page-header">
+	  <h2><i class="icon-list-alt" style="margin-top: 7px;"></i> Resultados <small>(<%= result_presenter.name %>)</small></h2>
+	</div>
+
+	<% if result_presenter.has_assessments? %>
+
+		<div class="tabbable">
+		  <ul class="nav nav-tabs">
+				<% @groups.each_with_index do |group, index| %>
+					<li class="<%= "active" if index == 0 %>"><a href="#group<%= index %>" data-toggle="tab"><%= result_presenter.group_name(group) %></a></li>
+				<% end %>
+		  </ul>
+
+		  <div class="tab-content">
+				<% @groups.each_with_index do |group, index| %>
+					<div class="tab-pane <%= "active" if index == 0 %>" id="group<%= index %>">
+			      <%= render "table", :group => group, :result_presenter => result_presenter %>
+			    </div>
+				<% end %>
+		  </div>
+		</div>
+		
+	<% else %>
+		<p>Você ainda não realizou nenhuma avaliação.</p>
+	<% end %>
+<% end %>
