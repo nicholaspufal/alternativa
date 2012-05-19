@@ -1,0 +1,20 @@
+<div class="page-header">
+	<h3>Questões que você errou:</h3>
+</div>
+
+<table class="table table-bordered table-striped" id="wrong_questions">
+  <thead>
+    <tr>
+      <th><i class="icon-question-sign"></i> Questão</th>
+      <th><i class="icon-ok-sign"></i> Resposta certa</th>
+    </tr>
+  </thead>
+  <tbody>
+	<% checker.user_incorrect_questions.each do |incorrect_question| %>
+	<tr>
+		<td width="50%"><%= incorrect_question.title %></td>
+		<td width="50%"><%= incorrect_question.answers.select(&:correct).pop.title %></td>
+	</tr>
+<% end %>
+  </tbody>
+</table>

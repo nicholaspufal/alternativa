@@ -1,0 +1,22 @@
+<% if checker.user_correct_questions.present? %>
+	<div class="page-header">
+		<h3>Questões que você acertou:</h3>
+	</div>
+
+	<table class="table table-bordered table-striped" id="correct_questions">
+	  <thead>
+	    <tr>
+	      <th><i class="icon-question-sign"></i> Questão</th>
+	      <th><i class="icon-ok-sign"></i> Resposta</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+		<% checker.user_correct_questions.each do |correct_question| %>
+		<tr>
+			<td width="50%"><%= correct_question.title %></td>
+			<td width="50%"><%= correct_question.answers.select(&:correct).pop.title %></td>
+		</tr>
+	<% end %>
+	  </tbody>
+	</table>
+<% end %>

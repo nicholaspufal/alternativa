@@ -18,27 +18,10 @@
 <% if @checker.user_incorrect_questions.empty? %>
 	<h2>Parabéns! Você acertou todas as questões da avaliação.</h2>
 <% else %>
-	<div class="page-header">
-		<h3>Você errou as seguintes questões:</h3>
-	</div>
-
-	<table class="table table-bordered table-striped">
-	  <thead>
-	    <tr>
-	      <th><i class="icon-question-sign"></i> Questão</th>
-	      <th><i class="icon-ok-sign"></i> Resposta certa</th>
-	    </tr>
-	  </thead>
-	  <tbody>
-		<% @checker.user_incorrect_questions.each do |incorrect_question| %>
-		<tr>
-			<td><%= incorrect_question.title %></td>
-			<td><%= incorrect_question.answers.select(&:correct).pop.title %></td>
-		</tr>
-	<% end %>
-	  </tbody>
-	</table>
+	<%= render 'wrong_questions', :checker => @checker %>
 <% end %>
+
+<%= render 'correct_questions', :checker => @checker %>
 
 <hr/>
 
