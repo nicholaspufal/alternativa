@@ -10,7 +10,7 @@ describe Admin::StudentsController do
     it "assigns all students as @students" do
       students = [FactoryGirl.create(:student, :email => "abc@gmail.com"), FactoryGirl.create(:student, :email => "abc2@gmail.com")]
       get :index, {}
-      assigns(:students).should eq(students)
+      assigns(:students).should == students
     end
   end
 

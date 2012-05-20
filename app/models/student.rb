@@ -2,6 +2,7 @@ class Student < User
   has_many :assessments
   has_and_belongs_to_many :groups
   has_many :exams, :through => :groups
+  after_create :send_mail
   
   default_scope :order => "lower(name) ASC"
   
@@ -22,5 +23,11 @@ class Student < User
   
   def find_exams_where_group(group)
     exams.select { |exam| exam.groups.include?(group) } 
+  end
+  
+  protected
+  
+  def send_mail
+    AdminMailer.new_sign_up(self).deliver
   end
 end

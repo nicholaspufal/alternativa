@@ -42,5 +42,12 @@ describe Student do
     student.toggle_status
     student.active?.should eq(false)
   end
-
+  
+  it "should send an email to the administrator after the sign up proccess" do
+    student = FactoryGirl.build(:student)
+    AdminMailer.should_receive(:new_sign_up)
+               .with(student)
+               .and_return(double().as_null_object)
+    student.save
+  end
 end

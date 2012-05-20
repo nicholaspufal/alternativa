@@ -1,5 +1,9 @@
 <p>Olá <%= @resource.email %>!</p>
 
-<p>Favor confirmar sua conta pelo link abaixo:</p>
+<p>Favor confirmar sua conta no Alternativa pelo link abaixo:</p>
 
 <p><%= link_to 'Confirmar minha conta', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>
+
+<hr/>
+
+<p>Não responda a este e-mail. E-mail enviado automaticamente através do Alternativa.</p>

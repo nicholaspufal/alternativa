@@ -1,0 +1,11 @@
+defaults: &defaults
+  admin_notifications_email: email_professor@provedor.com
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

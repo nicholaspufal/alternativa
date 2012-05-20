@@ -1,7 +1,11 @@
 <p>Olá <%= @resource.email %>!</p>
 
-<p>A sua conta foi bloqueada por conta de constantes tentativas incorretas.</p>
+<p>A sua conta foi bloqueada no Alternativa por conta de constantes tentativas incorretas.</p>
 
 <p>Clique no link abaixo para desbloqueá-la:</p>
 
 <p><%= link_to 'Desbloquear minha conta', unlock_url(@resource, :unlock_token => @resource.unlock_token) %></p>
+
+<hr/>
+
+<p>Não responda a este e-mail. E-mail enviado automaticamente através do Alternativa.</p>
