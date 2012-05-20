@@ -5,8 +5,8 @@ Funcionalidade: Professor cria avaliações
 	Eu quero criar uma avaliação
 	Para que eu possa disponibilizar uma prova pelo sistema
 	
-Contexto: Estou logado como administrador
-	Dado que eu sou um administrador e realizei login	
+Contexto: Estou logado como professor
+	Dado que eu sou um professor e realizei login	
 
 @javascript
 Cenário: Professor cria uma nova avaliação

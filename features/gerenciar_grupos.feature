@@ -5,8 +5,8 @@ Funcionalidade: Professor gerencia grupos
 	Eu quero gerenciar grupos de alunos
 	Para que eu possa gerar uma avaliação específica para cada grupo
 	
-Contexto: Estou logado como administrador
-	Dado que eu sou um administrador e realizei login
+Contexto: Estou logado como professor
+	Dado que eu sou um professor e realizei login
 	
 Cenário: Professor cria um novo grupo
 	Dado que eu estou no formulário de cadastro de grupo

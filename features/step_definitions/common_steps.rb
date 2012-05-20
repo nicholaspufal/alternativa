@@ -24,7 +24,7 @@ Dado /^que existe a avaliação "(.*)" disponível ao grupo "(.*)" em execução
   exam.save!
 end
 
-Dado /^que eu sou um administrador e realizei login$/ do  
+Dado /^que eu sou um professor e realizei login$/ do  
   email = 'professor_qualquercoisa@gmail.com'
   password = '123456'
   

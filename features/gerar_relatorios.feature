@@ -5,8 +5,8 @@ Funcionalidade: Professor gera relatórios
 	Eu quero gerar relatórios
 	Para que eu possa direcionar melhor o ensino aos meus alunos
 	
-Contexto: Estou logado como administrador
-	Dado que eu sou um administrador e realizei login
+Contexto: Estou logado como professor
+	Dado que eu sou um professor e realizei login
 	E que existem avaliações já respondidas por alunos
 
 Cenário: Professor visualiza relatórios de um grupo
