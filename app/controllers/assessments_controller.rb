@@ -7,8 +7,8 @@ class AssessmentsController < ApplicationController
   
   def index
     #refatorar
-    @upcoming_exams = current_user.exams.upcoming_exams - current_user.exams_done
-    @current_exams = current_user.exams.current_exams - current_user.exams_done
+    @upcoming_exams = current_user.exams.ordered.upcoming_exams.ordered - current_user.exams_done
+    @current_exams = current_user.exams.ordered.current_exams.ordered - current_user.exams_done
   end
     
   def new

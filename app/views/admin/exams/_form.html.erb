@@ -28,7 +28,7 @@
 		<%= hidden_field_tag "exam[group_ids][]", nil %>
 		<label class="control-label">Grupos que acessam</label>
 		<div class="controls">
-			<% Group.all.each do |group| %>
+			<% @groups.each do |group| %>
 				<label class="checkbox">
 					<%= check_box_tag "exam[group_ids][]", group.id, @exam.group_ids.include?(group.id) %>
 					<%= group.name %>

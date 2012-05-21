@@ -4,6 +4,8 @@ class Exam < ActiveRecord::Base
   has_many :assessments
   has_and_belongs_to_many :groups
   
+  scope :ordered, order("LOWER(title) ASC")
+  
   validates_presence_of :title, :start_time, :end_time
   validates_with ExamValidator
   

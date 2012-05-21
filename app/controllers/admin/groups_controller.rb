@@ -1,6 +1,8 @@
 class Admin::GroupsController < Admin::AdminController
+  before_filter :load_students, :except => [:index]
+  
   def index
-    @groups = Group.order("lower(name) ASC").all
+    @groups = Group.scoped.ordered
     respond_with @groups
   end
 
@@ -39,5 +41,11 @@ class Admin::GroupsController < Admin::AdminController
     @group = Group.find(params[:id])
     @group.destroy
     redirect_to admin_groups_path
+  end
+  
+  protected
+  
+  def load_students
+    @students = Student.scoped.ordered
   end
 end

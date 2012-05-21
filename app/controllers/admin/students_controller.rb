@@ -1,7 +1,7 @@
 class Admin::StudentsController < Admin::AdminController
   
   def index
-    @students = Student.scoped.order("lower(name) ASC")
+    @students = Student.scoped.ordered
     @active_students = @students.active_students
     @pending_students = @students.pending_students
   end

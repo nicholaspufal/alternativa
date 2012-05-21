@@ -1,4 +1,5 @@
 class Admin::ExamsController < Admin::AdminController
+  before_filter :load_groups, :except => [:index, :show]
 
   def index    
     @exams = Exam.order("start_time DESC")
@@ -49,6 +50,12 @@ class Admin::ExamsController < Admin::AdminController
     @exam = Exam.find(params[:id])
     @exam.destroy
     redirect_to admin_exams_path
+  end
+  
+  protected
+  
+  def load_groups
+    @groups = Group.scoped.ordered
   end
   
 end

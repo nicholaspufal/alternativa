@@ -4,7 +4,7 @@ class Student < User
   has_many :exams, :through => :groups
   after_create :send_mail
   
-  default_scope :order => "lower(name) ASC"
+  scope :ordered, order("LOWER(name) ASC")
   
   validates_presence_of :name
   
