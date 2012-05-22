@@ -40,12 +40,15 @@ $(document).ready(function() {
 
 	$("#exam_start_time").datetimepicker({
     onClose: function(dateText, inst) {
+            var startDateTextBox = $('#exam_start_time');
             var endDateTextBox = $('#exam_end_time');
+            
             if (endDateTextBox.val() != '') {
-                var testStartDate = new Date(dateText);
-                var testEndDate = new Date(endDateTextBox.val());
+                testStartDate = startDateTextBox.datetimepicker('getDate');
+                testEndDate = endDateTextBox.datetimepicker('getDate');
+                
                 if (testStartDate > testEndDate)
-                    endDateTextBox.val(dateText);
+                  endDateTextBox.val(dateText);
             }
             else {
                 endDateTextBox.val(dateText);
@@ -53,7 +56,6 @@ $(document).ready(function() {
         },
     onSelect: function (selectedDateTime){
         var start = $(this).datetimepicker('getDate');
-        $('#exam_end_time').val(""); //bugfix
         $('#exam_end_time').datetimepicker('option', 'minDate', new Date(start.getTime()));
     }
 	});
@@ -61,11 +63,15 @@ $(document).ready(function() {
 	$("#exam_end_time").datetimepicker({
 	  onClose: function(dateText, inst) {
         var startDateTextBox = $('#exam_start_time');
+        var endDateTextBox = $('#exam_end_time');
+        
         if (startDateTextBox.val() != '') {
-            var testStartDate = new Date(startDateTextBox.val());
-            var testEndDate = new Date(dateText);
-            if (testStartDate > testEndDate)
-                startDateTextBox.val(dateText);
+          
+          testStartDate = startDateTextBox.datetimepicker('getDate');
+          testEndDate = endDateTextBox.datetimepicker('getDate');
+          
+            if (testStartDate > testEndDate) 
+              startDateTextBox.val(dateText);
         }
         else {
             startDateTextBox.val(dateText);
@@ -73,7 +79,6 @@ $(document).ready(function() {
     },
     onSelect: function (selectedDateTime){
         var end = $(this).datetimepicker('getDate');
-        $('#exam_start_time').val(""); //bugfix
         $('#exam_start_time').datetimepicker('option', 'maxDate', new Date(end.getTime()) );
     }
 	});
