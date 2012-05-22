@@ -53,6 +53,7 @@ $(document).ready(function() {
         },
     onSelect: function (selectedDateTime){
         var start = $(this).datetimepicker('getDate');
+        $('#exam_end_time').val(""); //bugfix
         $('#exam_end_time').datetimepicker('option', 'minDate', new Date(start.getTime()));
     }
 	});
@@ -72,6 +73,7 @@ $(document).ready(function() {
     },
     onSelect: function (selectedDateTime){
         var end = $(this).datetimepicker('getDate');
+        $('#exam_start_time').val(""); //bugfix
         $('#exam_start_time').datetimepicker('option', 'maxDate', new Date(end.getTime()) );
     }
 	});
