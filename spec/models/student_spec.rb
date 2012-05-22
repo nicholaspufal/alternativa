@@ -5,16 +5,23 @@ describe Student do
     before(:each) do
       @group = FactoryGirl.create(:group, :name => "ABC")
       
-      @student = FactoryGirl.create(:student)
-      @student.groups << @group
+      @student = FactoryGirl.create(:student, :groups => [@group])
       
-      @exam1 = FactoryGirl.create(:exam)
-      @exam1.groups << @group
-          
-      @exam2 = FactoryGirl.create(:exam)    
-      @exam2.groups << @group
-      
-      @exam3 = FactoryGirl.create(:exam)
+      @exam1 = FactoryGirl.create(:exam, 
+                                  :title => "cba exam",
+                                  :start_time => "20/05/2012 15:00", 
+                                  :end_time => "20/05/2012 16:00",
+                                  :groups => [@group])
+                                            
+      @exam2 = FactoryGirl.create(:exam,
+                                  :title => "ABC exam",
+                                  :start_time => "20/05/2012 15:30", 
+                                  :end_time => "20/05/2012 16:30",
+                                  :groups => [@group])
+                                      
+      @exam3 = FactoryGirl.create(:exam,
+                                  :start_time => "12/05/2012 15:30", 
+                                  :end_time => "12/05/2012 16:30")
     end
     
     it "should be able to retrieve all the exams done" do  
@@ -24,11 +31,45 @@ describe Student do
       @student.exams_done.should eq([@exam1,@exam2])
     end    
     
+    it "should be able to retrieve the upcoming exams ordered alphabetically" do
+      pretend_now_is(Time.parse("2012-04-25 14:50")) do 
+        @student.upcoming_exams.should eq([@exam2, @exam1])
+      end
+    end
+    
+    it "should be able to retrieve the current exams ordered alphabetically" do
+      exam4 = FactoryGirl.create(:exam,
+                                 :title => "cba exam",
+                                 :start_time => "20/05/2012 14:30", 
+                                 :end_time => "20/05/2012 16:30",
+                                 :groups => [@group])
+
+      exam5 = FactoryGirl.create(:exam,
+                                :start_time => "20/05/2012 12:00", 
+                                :end_time => "20/05/2012 14:30",
+                                :groups => [@group])
+
+      exam6 = FactoryGirl.create(:exam,
+                                :start_time => "20/05/2012 14:30", 
+                                :end_time => "20/05/2012 16:30",
+                                :groups => [@group])
+                                
+      exam7 = FactoryGirl.create(:exam,
+                                 :title => "ABC exam",
+                                 :start_time => "20/05/2012 11:30", 
+                                 :end_time => "20/05/2012 16:30",
+                                 :groups => [@group])
+      
+      FactoryGirl.create(:assessment, :exam => exam6, :student => @student)
+      
+      pretend_now_is(Time.parse("20/05/2012 14:50")) do 
+        @student.current_exams.should eq([exam7, exam4])
+      end
+    end
+    
     it "should filter by a specific group" do
-      @exam4 = FactoryGirl.create(:exam)
-      @exam4.groups << @group  
-                
-      @student.find_exams_where_group(@group).should eq([@exam1, @exam2, @exam4])
+      exam4 = FactoryGirl.create(:exam, :groups => [@group])
+      @student.find_exams_where_group(@group).should eq([@exam1, @exam2, exam4])
     end
   end
   

@@ -6,9 +6,8 @@ class AssessmentsController < ApplicationController
   before_filter :redirect_admin
   
   def index
-    #refatorar
-    @upcoming_exams = current_user.exams.ordered.upcoming_exams.ordered - current_user.exams_done
-    @current_exams = current_user.exams.ordered.current_exams.ordered - current_user.exams_done
+    @upcoming_exams = current_user.upcoming_exams
+    @current_exams = current_user.current_exams
   end
     
   def new
