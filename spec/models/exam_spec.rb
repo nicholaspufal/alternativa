@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe Exam do
+  
+  subject { Exam.new }
 
   context "validations" do
     it "should have a title" do
@@ -17,6 +19,24 @@ describe Exam do
     
     it "should have a end_time" do
       subject.should have_at_least(1).error_on(:end_time)
+    end
+    
+    context "date and time" do
+      it "should have a start time lower than the end time" do
+        student = FactoryGirl.build(:exam, 
+                                    :start_time => "22/05/2012 16:00", 
+                                    :end_time => "22/05/2012 15:00"
+                                    )
+
+        student.should have_at_least(1).error_on(:start_time)
+        
+        student = FactoryGirl.build(:exam, 
+                                    :start_time => "22/05/2012 16:00", 
+                                    :end_time => "22/05/2012 16:00"
+                                    )
+
+        student.should have_at_least(1).error_on(:start_time)
+      end      
     end
   end
   
