@@ -1,73 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Alternativa</title>
-  <%= stylesheet_link_tag    "application" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
+	<meta charset="utf-8">
 <style>
 	html, body {
 	  background-color: #eee;
 	}
 	body {
-	  padding-top: 40px; /* 40px to make the container go all the way to the bottom of the topbar */
+	 	padding-top: 40px;
+	 	font-family: Arial;
+		font-weight: bold;
+		font-size: 14px;
 	}
-	.container > footer p {
-		margin: 5px auto;
-	  text-align: center; /* center align it with the container */
-	}
-
-	/* The white background content wrapper */
+	
 	.content {
-	  background-color: #fff;
-	  padding: 20px;
-	  margin: 0 -20px; /* negative indent the amount of the padding to maintain the grid system */
-	  -webkit-border-radius: 0 0 6px 6px;
-	     -moz-border-radius: 0 0 6px 6px;
-	          border-radius: 0 0 6px 6px;
-	  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
-	     -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
-	          box-shadow: 0 1px 2px rgba(0,0,0,.15);
+		color: #484848;
+		border-radius: 10px;
+		background-color: #ccc;
+		width: 600px;
+		margin: 0px auto;
+		opacity: 0.9;
+		padding: 10px;
+		box-shadow: #989898 2px 4px 3px;
 	}
-
-	/* Page header tweaks */
-	.page-header {
-	  padding: 20px 20px 10px;
-	  margin: -20px -20px 20px;
+	
+	p {
+		line-height: 25px;
 	}
-
 </style>
+<title>Alternativa - Página não encontrada</title>
 </head>
 <body>
-
-  <div class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-      <div class="container">
-        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </a>
-        <%= link_to "Alternativa", root_path, :class => "brand" %>
-      </div>
-    </div>
+  <div class="content">
+		<h2>Oops! Página não encontrada...</h2>
+		<hr/>
+		<p>Se você tentou acessar uma avaliação, é provável que ela não exista mais. <br/> Se a página deveria estar disponível, fale com o seu professor. 
   </div>
-
-  <div class="container">
-
-    <div class="content">
-			<h3>Oops! Página não encontrada</h3>
-			<p>Se você tentou acessar uma avaliação, é provável que ela não exista mais. Por favor, visite a <%= link_to "página inicial do Alternativa", root_path %>. Se a página deveria estar disponível, fale com o seu professor. 
-    </div>
-
-    <footer>
-      <p>&copy; Alternativa 2012</p>
-    </footer>
-
-  </div> <!-- /container -->
-
-	<%= yield :custom_javascript %>
-	<%= javascript_tag '$.fx.off = true;' if Rails.env.test? %>
-
 </body>
 </html>
+
