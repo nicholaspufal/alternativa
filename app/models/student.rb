@@ -8,9 +8,9 @@ class Student < User
   
   attr_accessible :group_ids
   
-  scope :ordered, order("LOWER(name) ASC")
-  scope :active_students, where(:active => true)  
-  scope :pending_students, where(:active => false)
+  scope :ordered, lambda { order("LOWER(name) ASC") }
+  scope :active_students, lambda { where(:active => true) }
+  scope :pending_students, lambda { where(:active => false) }
   
   def toggle_status
     toggle!(:active)

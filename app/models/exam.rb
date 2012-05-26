@@ -11,7 +11,7 @@ class Exam < ActiveRecord::Base
   
   accepts_nested_attributes_for :questions, :reject_if => lambda { |a| a[:title].blank? }, :allow_destroy => true
   
-  scope :ordered, order("LOWER(title) ASC")
+  scope :ordered, lambda { order("LOWER(title) ASC") } 
   scope :upcoming_exams, lambda { where("start_time > ?", Time.now) }
   scope :current_exams, lambda { where("start_time <= :time_now AND end_time >= :time_now", :time_now => Time.now) } 
   
