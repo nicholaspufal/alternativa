@@ -14,17 +14,16 @@
 //= require_tree .
 
 function remove_question(link) {	
-		$(link).closest("fieldset.question")
-					 .children(".clearfix:first")
-					 .children("div.input")
-					 .children("input:hidden")
-					 .val("1");
+    $(link).closest("fieldset.question")
+            .children(".control-group:first")
+            .children("input:hidden")
+            .val("1");
 					
     $(link).closest("fieldset.question").fadeOut();  
 }
 
 function remove_field(link) {
-		$(link).prevAll("input:hidden").val("1");  
+		$(link).prevAll("input:hidden.hidden_destroy").val("1");  
     $(link).closest(".control-group").fadeOut();  
 }
 

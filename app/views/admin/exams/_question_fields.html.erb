@@ -1,7 +1,9 @@
 <fieldset class="question">
 	<legend>Questão (<%= link_to_function "remover questão", "remove_question(this)" %>)</legend>
-
+	
+	 
 <div class="control-group">
+	<%= builder.hidden_field :_destroy %>
 	<%= builder.label :weight, nil, :class => "control-label" %>
 	<div class="controls">
 		<%= builder.select :weight, 
@@ -15,7 +17,6 @@
 <div class="control-group">
 	<%= builder.label :title, nil, :class => "control-label" %>
 	<div class="controls">
-		<%= builder.hidden_field :_destroy %> 
 		<%= builder.text_area :title, :class => "input-xlarge span9", :rows => 6 %>
 	</div>
 </div> 
