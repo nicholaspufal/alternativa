@@ -1,6 +1,6 @@
 class AdminMailer < ActionMailer::Base
-  default from: "alternativaprovasobjetivas@gmail.com", 
-          to: ADMIN_CONFIG['admin_notifications_email']
+  default from: CONFIG['app_email'], 
+          to: CONFIG['admin_email']
   
   def new_sign_up(student)
     @student = student

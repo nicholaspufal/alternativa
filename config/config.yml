@@ -1,5 +1,6 @@
 defaults: &defaults
-  admin_notifications_email: email_professor@provedor.com
+  app_email: email_sistema@provedor.com
+  admin_email: email_professor@provedor.com
 
 development:
   <<: *defaults
